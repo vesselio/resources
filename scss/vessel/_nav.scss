@@ -1,0 +1,30 @@
+.navbar{
+    &.hero{
+        margin-bottom: 0px;
+    }
+    .mobile-auth-btns{
+        margin: 10px 10px 0 0;
+    }
+    .nav{
+        .btn,
+        button{
+            color: #fff;
+            &:hover{
+                background-color: darken( $btn-default-bg, 10% );
+                color: #fff;
+            }
+        }
+        &.nav-ctas{
+            li{
+                margin: 10px 0 0 10px;
+                &:first-child{
+                    margin-left: 0px;
+                }
+                a{
+                    padding: 6px 12px;
+                }
+            }
+        }
+    }
+
+}

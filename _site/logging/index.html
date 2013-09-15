@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Logging | Vessel.io</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+<body>
+    <div class='wrapper'>
+        <header>
+    <nav class="navbar navbar-default hero" role="navigation">
+        <div class='container'>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class='visible-xs pull-right mobile-auth-btns'>
+                    <a href="#" class='btn btn-default'>Sign In</a>
+                    <a href="#" class='btn btn-primary'>Sign Up</a>
+                </div>
+                <a class="navbar-brand" href="">
+                    <img src='/img/vessel-logo-2x.png' width='34' height='30' />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#">Features</a>
+                    </li>
+                    <li>
+                        <a href="">Resources</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right nav-ctas hidden-xs">
+                    <li>
+                        <a href="#" class='btn btn-default' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signin'>Sign In</a>
+                    </li>
+                    <li>
+                        <a href="#" class='btn btn-primary' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signup'>Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+        <div class='container padding-top-bottom-25'>
+            <div class='row'>
+                <div class='col-sm-3 col-md-3'>
+                    <ul class="list-group side-nav">
+  
+    <li class="list-group-item">
+      <a href="/upload-api">Upload API's</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/logging">Logging</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/handled-exceptions">Handled Exceptions</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/getting-started">Getting Started</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/enable-support-desk">Enable Support Desk</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/crash-reporting">Crash Reporting</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/beta-kill-switch">Beta Kill Switch</a>
+    </li>
+  
+</ul>
+                </div>
+                <div class='col-sm-9 col-md-9'>
+                    <div class='container'>
+                        <div class='row'>
+                            <div class='col-sm-12 col-md-12'>
+                                <ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Logging</h1>
+        
+        <p>VesselSDK provides a logging capability. It is a wrapper on top of standard android logging functionality. To enable Vessel Logger import following statement.</p>
+    
+<div class="highlight"><pre><code class="java"><span class="kn">import</span> <span class="nn">com.vessel.Log</span><span class="o">;</span>
+</code></pre></div>
+        <p>Vessel Log overrides standard android logging api. <a target='_blank' href='http://developer.android.com/tools/debugging/debugging-log.html#logClass'>Learn more.</a></p>
+        <p>For example:</p>
+
+<div class="highlight"><pre><code class="java"><span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&quot;MyActivity&quot;</span><span class="o">,</span> <span class="s">&quot;MyClass.getView() — get item number &quot;</span> <span class="o">+</span> <span class="n">position</span><span class="o">);</span>
+</code></pre></div>
+
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Logging</h1>
+        
+        <p>VesselFramework provides a logging capability. You can use it by calling log method as below.</p>
+<div class="highlight"><pre><code class="java"><span class="o">[</span><span class="n">VesselCrashReporter</span> <span class="nl">log:</span><span class="err">@</span><span class="s">&quot;Log message %@&quot;</span><span class="o">,</span> <span class="n">message</span><span class="o">];</span>
+</code></pre></div>
+    </div>
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <footer>
+    <div class='jumbotron bg-color-dark-blue footer'>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-xs-6 col-sm-8 col-md-8'>
+                    <ul class='pull-left unstyled horizonal'>
+                        <li>
+                            <a href="">Features</a>
+                        </li>
+                        <li>
+                            <a href="#">Resources</a>
+                        </li>
+                        <li>
+                            <a href='http://blog.vessel.io/'>Blog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class='col-xs-6 col-sm-4 col-md-4'>
+                    <ul class='pull-right unstyled horizonal text-right'>
+                        <li>
+                            <a href='#' class='btn btn-primary' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="footer" data-galabel='signup'>Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+---
+layout: default
+title: Beta Kill Switch
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Beta Kill Switch</h1>
+        <h4 class='list-group-item-heading'>Setting up the kill switch</h4>
+        <p>You can remotely close your beta and/ or force early adopters or beta testers to automatically migrate to newer version or release version in app store. To use kill switch feature, first integrate Vessel SDK properly. To enable Vessel kill switch you need to configure update receiver in your application as follows.</p>
+        <p>To check updates periodically add following method in your onResume method.</p>
+
+{% highlight java %}
+    @Override
+    protected void onResume() {
+    //Register update receiver 
+ 
+    VesselSDK.registerUpdateReceiver(MainActivity.this);
+    super.onResume();
+}
+{% endhighlight %}
+
+        <p>Unregister update receiver, in onPause method as shown bellow. This will cancel any pending check.</p>
+
+{% highlight java %}
+    @Override
+    protected void onPause() {
+ 
+    VesselSDK.unRegisterUpdateReceiver();
+    super.onPause();
+}
+{% endhighlight %}
+
+        <h4 class='list-group-item-heading'>Closing a live beta</h4>
+        <ol>
+            <li><a href='https://www.vessel.io/accounts/login/'>Login to Vessel Command Center</a></li>
+            <li>Navigate to Deployment Center.</li>
+            <li>Select the build you want to close and click on close beta switch.</li>
+            <li>Enter your beta close configuration as below.</li>
+            <img src='{{ site.baseurl }}/img/beta_kill_switch/closebeta.png' alt='slode beta' />
+            <li>Once you close the beta, all users using this version will see update message as shown bellow once they open your app next time.</li>
+            <img src='{{ site.baseurl }}/img/beta_kill_switch/killswitch.png' alt='kill switch' />
+        </ol>
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Beta Kill Switch</h1>
+        <h4 class='list-group-item-heading'>Setting up the kill switch</h4>
+        <p>You can remotely close your beta and/ or force early adopters or beta testers to automatically migrate to newer version or release version in app store. To use kill switch feature, first integrate Vessel Framework properly. To enable Vessel kill switch you need to configure framework as below.</p>
+        <p>To check updates periodically add following in applicationWillEnterForeground method.</p>
+
+{% highlight obj-c %}
+- (void)applicationWillEnterForeground:(UIApplication *)application{
+         
+    [Vessel checkDistributionStatus];
+}
+{% endhighlight %}
+
+        <h4 class='list-group-item-heading'>Closing a live beta</h4>
+        <ol>
+            <li><a href='https://www.vessel.io/accounts/login/'>Login to Vessel Command Center</a></li>
+            <li>Navigate to Deployment Center.</li>
+            <li>Select the build you want to close and click on close beta switch.</li>
+            <li>Enter your beta close configuration as below.</li>
+            <img src='{{ site.baseurl }}/img/beta_kill_switch/closebeta.png' alt='slode beta' />
+            <li>Once you close the beta, all users using this version will see an update message next time they open the app.</li>
+        </ol>
+    </div>
+</div>

@@ -1,12 +1,40 @@
 <header>
-    <h1>Resources</h1>
-    <p>Vessel Resources and Documentation</p>
+    <nav class="navbar navbar-default hero" role="navigation">
+        <div class='container'>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class='visible-xs pull-right mobile-auth-btns'>
+                    <a href="#" class='btn btn-default'>Sign In</a>
+                    <a href="#" class='btn btn-primary'>Sign Up</a>
+                </div>
+                <a class="navbar-brand" href="">
+                    <img src='{{ site.baseurl }}/img/vessel-logo-2x.png' width='34' height='30' />
+                </a>
+            </div>
 
-    <p class="view"><a href="https://github.com/vesselio/resources">View the Project on GitHub <small>vesselio/resources</small></a></p>
-
-    <ul>
-      <li><a href="https://github.com/vesselio/resources/zipball/master">Download <strong>ZIP File</strong></a></li>
-      <li><a href="https://github.com/vesselio/resources/tarball/master">Download <strong>TAR Ball</strong></a></li>
-      <li><a href="https://github.com/vesselio/resources">View On <strong>GitHub</strong></a></li>
-    </ul>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#">Features</a>
+                    </li>
+                    <li>
+                        <a href="{{ site.baseurl }}">Resources</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right nav-ctas hidden-xs">
+                    <li>
+                        <a href="#" class='btn btn-default' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signin'>Sign In</a>
+                    </li>
+                    <li>
+                        <a href="#" class='btn btn-primary' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signup'>Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>

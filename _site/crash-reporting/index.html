@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crash Reporting | Vessel.io</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+<body>
+    <div class='wrapper'>
+        <header>
+    <nav class="navbar navbar-default hero" role="navigation">
+        <div class='container'>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class='visible-xs pull-right mobile-auth-btns'>
+                    <a href="#" class='btn btn-default'>Sign In</a>
+                    <a href="#" class='btn btn-primary'>Sign Up</a>
+                </div>
+                <a class="navbar-brand" href="">
+                    <img src='/img/vessel-logo-2x.png' width='34' height='30' />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#">Features</a>
+                    </li>
+                    <li>
+                        <a href="">Resources</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right nav-ctas hidden-xs">
+                    <li>
+                        <a href="#" class='btn btn-default' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signin'>Sign In</a>
+                    </li>
+                    <li>
+                        <a href="#" class='btn btn-primary' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="header" data-galabel='signup'>Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+        <div class='container padding-top-bottom-25'>
+            <div class='row'>
+                <div class='col-sm-3 col-md-3'>
+                    <ul class="list-group side-nav">
+  
+    <li class="list-group-item">
+      <a href="/upload-api">Upload API's</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/logging">Logging</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/handled-exceptions">Handled Exceptions</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/getting-started">Getting Started</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/enable-support-desk">Enable Support Desk</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/crash-reporting">Crash Reporting</a>
+    </li>
+  
+    <li class="list-group-item">
+      <a href="/beta-kill-switch">Beta Kill Switch</a>
+    </li>
+  
+</ul>
+                </div>
+                <div class='col-sm-9 col-md-9'>
+                    <div class='container'>
+                        <div class='row'>
+                            <div class='col-sm-12 col-md-12'>
+                                <ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Crash Reporting</h1>
+        
+        <h4 class='list-group-item-heading'>Proguard Support</h4>
+        <p>Vessel Command Center supports server side obfuscation. In case if you enabled <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>ProGuard</a> for your application then upload mapping.txt decode Obfuscated stacktraces. <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>Learn more</a>.</p>
+
+        <p>To upload mapping file, <a target='_blank' href='https://www.vessel.io/accounts/login/'>Login to command center</a> select relevant application version and click on setting icon as shown bellow.</p>
+
+        <img src='/img/crash_reporting/vsetting.png' alt='settings' />
+
+        <p>Once you upload mapping.txt file, Vessel command center decodes obfuscated statcktraces.</p>
+
+        <img src='/img/crash_reporting/proguard.png' alt='progaurd' />
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Crash Reporting</h1>
+        <p>VesselFramework monitors and reports any unhandled exceptions. In case if network is unreachable, VesselFramework saves crashes in offlne mode and reports back later to Vessel Platform.</p>
+
+        <h4 class='list-group-item-heading'>Symbolification Support</h4>
+        <p>Vessel Command Center supports server side obfuscation.. This allows the debug symbols to be stripped from the binary making the binary size smaller. For server side symbolication to work properly, you need to upload the dSYM file of the build. Refer getting started guide to enable auto uploads. Else to upload dSYM file manually refer following steps.</p>
+        <p>To upload dSYM file, <a target='_blank' href='https://www.vessel.io/accounts/login/'>login to command center</a> select relevant application version and click on setting icon as shown below.</p>
+
+        <img src='/img/crash_reporting/iossetting.jpeg' alt='iOS Settings' />
+
+        <p>Once you upload dSYM file, Vessel command center starts decoding obfuscated statcktraces.</p>
+
+        <img src='/img/crash_reporting/iosdsym.jpeg' alt='iOS Settings' />
+    </div>
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <footer>
+    <div class='jumbotron bg-color-dark-blue footer'>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-xs-6 col-sm-8 col-md-8'>
+                    <ul class='pull-left unstyled horizonal'>
+                        <li>
+                            <a href="">Features</a>
+                        </li>
+                        <li>
+                            <a href="#">Resources</a>
+                        </li>
+                        <li>
+                            <a href='http://blog.vessel.io/'>Blog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class='col-xs-6 col-sm-4 col-md-4'>
+                    <ul class='pull-right unstyled horizonal text-right'>
+                        <li>
+                            <a href='#' class='btn btn-primary' data-gatrackevent="true" data-gaeventtype='click' data-gacategory="footer" data-galabel='signup'>Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

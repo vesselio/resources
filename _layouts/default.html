@@ -1,12 +1,26 @@
 {% include top.html %}
 
-<body class="wrap">
-    
-  {% include header.html %}
-
-  {{ content }}
-
-  {% include footer.html %}
-
+<body>
+    <div class='wrapper'>
+        {% include header.html %}
+        <div class='container padding-top-bottom-25'>
+            <div class='row'>
+                <div class='col-sm-3 col-md-3'>
+                    {% include left_nav.html %}
+                </div>
+                <div class='col-sm-9 col-md-9'>
+                    <div class='container'>
+                        <div class='row'>
+                            <div class='col-sm-12 col-md-12'>
+                                {{ content }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    {% include footer.html %}
 </body>
 </html>

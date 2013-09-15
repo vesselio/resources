@@ -1,0 +1,45 @@
+.bg-color-dark-blue{
+    background-color: $brand-info;
+}
+.bg-color-blue{
+    background-color: $brand-primary;
+}
+
+.color-blue{
+    color: $brand-primary;
+}
+.color-white{
+    color: #fff;
+}
+
+
+.margin-top-25{
+    margin-top: 25px;
+}
+.margin-top-50{
+    margin-top: 50px;
+}
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+.margin-bottom-25{
+    margin-bottom: 25px;
+}
+.margin-bottom-50{
+    margin-bottom: 50px;
+}
+.padding-top-bottom-25{
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+.padding-top-bottom-50{
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.padding-top-bottom-100{
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+.inline-block{
+    display: inline-block;
+}

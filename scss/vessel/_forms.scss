@@ -1,0 +1,14 @@
+.input-group{
+    width: 100%;
+    input[type='text'],
+    input[type='textarea'],
+    input[type='email'],
+    input[type='password']{
+        margin-bottom: 15px;
+    }
+    label{
+        input[type='checkbox']{
+            margin-right: 10px;
+        }
+    }
+}

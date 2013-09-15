@@ -1,0 +1,157 @@
+---
+layout: default
+title: Upload API's
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Upload API's</h1>
+        <p>Vessel command center provides an upload api. You can use an upload api's to directly upload and distribute builds from from your build server.</p>
+        <p>Before you use upload pi, Login to Vessel Command Center, navigate to account settings. Copy your Vessel Api Key as shown below.</p>
+        <img src='{{ site.baseurl }}/img/upload_api/apikey.png' alt='upload api' />
+        <p>To upload and distribute build</p>
+
+{% highlight java %}
+// 1. make a POST call to 
+ 
+https://api.vesselapp.com/api3/deploy/upload/
+ 
+// 2. with following paramters
+ 
+api_key = Your Vessel Api Key.
+file = File field. The apk file that needs to be distributed.
+releasenotes - The release notes.
+ 
+// 3. You can also pass:
+ 
+replace - Optional. 'True' if an existing version needs to be replaced.
+users - Optional. CSV format. Emails of users to whom the beta needs to be sent.
+groups - Optional. CSV format. Id's of groups to whom the beta needs to be sent.
+mapping - Optional. File. Proguard to decode obfuscated stacktraces.
+{% endhighlight %}
+
+        <p>On successful post request, you will receive a response in json format. For example</p>
+{% highlight java %}
+        {
+        "push.info":{
+        "push.noUsersInvited":2, 
+        "push.directDownloadUrl":"http://vessel.io/NYxsasu", 
+        "push.versionName":"1.0",
+        "push.versionCode":"5",
+        "push.proguardEnabled":false
+    },
+ 
+    "success":true
+}
+ 
+// Response parameters
+success - Indicates if API call was successful
+push.noUsersInvited - Total number of users invited.
+push.versionName - Version of the apk/ipa file uploaded
+push.versionCode - Version code/Build identifier of the apk/ipa file uploaded
+push.proguardEnabled - Indicates if a mapping file as uploaded
+push.directDownloadUrl - The url which can be used to directly download the apk/ipa file.
+{% endhighlight %}
+
+        <p>In case of error, you will receive error response. For example</p>
+
+{% highlight java %}
+            {
+            "push.errors":{
+            "fielderrors":{
+            "file":[
+            "Beta for app Test42 with version_name 1.0 and version_code 5 already exists"
+            ]
+        },
+        "no_errors":1
+    },
+    "success":false
+}
+ 
+//In case of error response, success will be false.
+push.errors ­: field lists out all the errors for corresponding fields.
+no_errors ­ lists out the number of errors.
+{% endhighlight %}
+
+        <p>You can also use a <a href='http://curl.haxx.se/'>cURL</a> utility to upload builds from command line.</p>
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Upload API's</h1>
+        <p>Vessel command center provides an upload api. You can use an upload api's to directly upload and distribute builds from from your build server.</p>
+        <p>Before you use upload pi, Login to Vessel Command Center, navigate to account settings. Copy your Vessel Api Key as shown below.</p>
+        <img src='{{ site.baseurl }}/img/upload_api/apikey.png' alt='upload api' />
+        <p>To upload and distribute build</p>
+
+{% highlight obj-c %}
+// 1. make a POST call to 
+ 
+https://api.vesselapp.com/api3/deploy/upload/
+ 
+// 2. with following paramters
+ 
+api_key = Your Vessel Api Key.
+file = File field. The API file that needs to be distributed.
+releasenotes - The release notes.
+ 
+// 3. You can also pass:
+ 
+replace - Optional. 'True' if an existing version needs to be replaced.
+users - Optional. CSV format. Emails of users to whom the beta needs to be sent.
+groups - Optional. CSV format. Id's of groups to whom the beta needs to be sent.
+mapping - Optional. File. Proguard to decode obfuscated stacktraces.
+{% endhighlight %}
+
+        <p>On successful post request, you will receive a response in json format. For example</p>
+{% highlight obj-c %}
+        {
+        "push.info":{
+        "push.noUsersInvited":2, 
+        "push.directDownloadUrl":"http://vessel.io/NYxsasu", 
+        "push.versionName":"1.0",
+        "push.versionCode":"5",
+        "push.proguardEnabled":false
+    },
+ 
+    "success":true
+}
+ 
+// Response parameters
+success - Indicates if API call was successful
+push.noUsersInvited - Total number of users invited.
+push.versionName - Version of the apk/ipa file uploaded
+push.versionCode - Version code/Build identifier of the apk/ipa file uploaded
+push.proguardEnabled - Indicates if a mapping file as uploaded
+push.directDownloadUrl - The url which can be used to directly download the apk/ipa file.
+{% endhighlight %}
+
+        <p>In case of error, you will receive error response. For example</p>
+
+{% highlight obj-c %}
+            {
+            "push.errors":{
+            "fielderrors":{
+            "file":[
+            "Beta for app Test42 with version_name 1.0 and version_code 5 already exists"
+            ]
+        },
+        "no_errors":1
+    },
+    "success":false
+}
+ 
+//In case of error response, success will be false.
+push.errors ­: field lists out all the errors for corresponding fields.
+no_errors ­ lists out the number of errors.
+{% endhighlight %}
+
+        <p>You can also use a <a href='http://curl.haxx.se/'>cURL</a> utility to upload builds from command line.</p>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+ul{
+    &.horizonal{
+        padding-left: 0px;
+        li{
+            float: none;
+            margin-left: 0px;
+        }
+    }
+    &.unstyled{
+        list-style: none;
+    }
+}
+@media (min-width: $screen-sm) {
+    ul{
+        &.horizonal{
+            padding-left: 0px;
+            li{
+                float: left;
+                margin-left: 40px;
+                &:first-child{
+                    margin-left: 0px;
+                }
+            }
+        }
+        &.unstyled{
+            list-style: none;
+        }
+    }
+}

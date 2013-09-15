@@ -1,0 +1,17 @@
+.footer{
+    height: 250px;
+    overflow: hidden;
+    a{
+        color: #fff;
+    }
+}
+@media (min-width: $screen-sm) {
+    .footer{
+        height: 151px;
+        overflow: hidden;
+        a{
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+}
