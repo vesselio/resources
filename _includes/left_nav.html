@@ -1,5 +1,5 @@
 <div class="list-group side-nav">
     {% for post in site.posts reversed %}
-        <a class="list-group-item" href="{{ post.url }}">{{ post.title }}</a>
+        <a class="list-group-item {% if page.url == post.url %}active{% endif %}" href="{{ post.url }}">{{ post.title }}</a>
     {% endfor %}
 </div>
