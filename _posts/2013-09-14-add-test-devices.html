@@ -1,0 +1,44 @@
+---
+layout: default
+title: Add Test Devices
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Add test device</h1>
+
+        <ol>
+            <li>If you use Eclipse for building your application then, In Eclipse</li>
+            
+{% highlight java %}
+Goto Window-> Show View -> Other -> Android-> Logcat.
+{% endhighlight %}
+            
+            <p>Or If you use a command line for building your android application then, go to your android sdk installation directory and run following command.</p>
+            
+{% highlight java %}
+android-sdk\platform-tools>adb logcat
+{% endhighlight %}
+            
+            <li>Install debug build of your application on emulator or device. Learn more.</li>
+            <li>In log view, search for keyword "VesselSDK" and look for "To Add as test device, visit url" as bellow.</li>
+            
+            <img src='{{ site.baseurl }}img/add_test_device/logcat.png' alt='Add test device' />
+            
+            <li>Copy and paste activation url in browser to activate this device as test device. On successful activation you can use this device to deliver specific variation. To learn more visit use test devices section.</li>
+        </ol>
+
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Logging</h1>
+
+    </div>
+</div>

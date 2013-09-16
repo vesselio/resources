@@ -15,18 +15,18 @@
                                 {{ content }}
                             </div>
                         </div>
-                        <div class='row'>
+                        <div class='row margin-top-25'>
                             <div class='col-xs-6 col-sm-6 col-md-6 text-left'>
                                 {% if page.previous.url %} 
                                     <a href='{{page.previous.url}}' title="Previous Post: 
-                    {{page.previous.title}}" class='btn btn-primary'><span class='glyphicon glyphicon-arrow-left'></span> Previous</a>
+                    {{page.previous.title}}"><span class='glyphicon glyphicon-arrow-left'></span> Previous</a>
                                 {% endif %}
                                 
                             </div>
                             <div class='col-xs-6 col-sm-6 col-md-6 text-right'>
                                 {% if page.next.url %}
                                     <a href='{{page.next.url}}' title="Next Post: 
-                    {{page.next.title}}" class='btn btn-primary'>Next <span class='glyphicon glyphicon-arrow-right'></span></a>
+                    {{page.next.title}}">Next <span class='glyphicon glyphicon-arrow-right'></span></a>
                                 {% endif %}
                             </div>
                         </div>
