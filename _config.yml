@@ -3,3 +3,4 @@ lsi: false
 pygments: true
 baseurl: /
 permalink: /:title
+paginate: 1
