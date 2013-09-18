@@ -41,8 +41,12 @@ If ( VesselSDK.whichVariation() == TestVariation.A) {
 VesselSDK.getValue("WallColor" ,<default failover value>);
 {% endhighlight %}
             <p>Once test is loaded, it remains same for the entire life cycle of particular version for end user irrespective of Internet connection.  Following screen demonstrates the end user experience for each variation</p>
-            <img src='{{ site.baseurl }}img/game_test/variationA.png' />
-            <img src='{{ site.baseurl }}img/game_test/variationB.png' />
+            <div class='col-sm-6 col-md-6'>
+                <img src='{{ site.baseurl }}img/game_test/variationA.png' />
+            </div>
+            <div class='col-sm-6 col-md-6'>
+                <img src='{{ site.baseurl }}img/game_test/variationB.png' />
+            </div>
         </ol>
         <p>Once integration is done, Greg kicks of the experiments by filtering user base by location, device type or average session time etc. and immediately start monitoring the results as follows.</p>
         <ul>
