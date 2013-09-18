@@ -1,0 +1,42 @@
+---
+layout: default
+title: Landing Screen Test
+categories: use_cases
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>{{ page.title }}</h1>
+        <p>In this tutorial, we will learn how to do SignUpScreen test. This tutorial will help you understand how Vessel can be used in A/B your first time your experience of your production mobile app.</p>
+
+        <h4>Problem:</h4>
+        <p>John wants to understand which signup experience drives more user sign up. One with email traditional way or social login’s.</p>
+        <img src='{{ site.baseurl }}img/landing_screen/image01.png' />
+
+        <h4>Download and Integrate VesselSDK:</h4>
+        <p>John registers his application and integrate VesselSDK in his application. Refer to the quick start integrate guide to learn more or get source code.</p>
+
+        <h4>Create Test:</h4>
+        <p>He opens Vessel A/B Center, and clicks on create A/B and creates <strong>SignUpScreen</strong> as shown below. </p>
+        <img src='{{ site.baseurl }}img/landing_screen/image04.png' />
+    
+        <h4>Decide and Distribute</h4>
+        <p>Variation is a formal technique to distribute test between app users. In this case he decides to give 50% users new sign up flow experience and for rest default (baseline) user experience.</p>
+        <img src='{{ site.baseurl }}img/landing_screen/image02.png' />
+
+        <h4>Define Variation Controls</h4>
+        <p>John wants to given different subtitle for each variation, so he defines adds different messages for each variation as shown below.</p>
+        <img src='{{ site.baseurl }}img/landing_screen/image03.png' />
+
+        <h4>Start Test and Analyse</h4>
+        <p>John have 500,000 total users so he decided to run this test on 10 % of his user base to start with. He can always pause the test to increase target. (You can run more than 10% depending upon number of total app users). He don’t want to apply any filters, so start test.</p>
+        <img src='{{ site.baseurl }}img/landing_screen/image00.png' />
+
+        <p>Once test starts, John can now monitor distribution, user engagement and session time and funnel analysis in real time. </p>
+    </div>
+</div>
