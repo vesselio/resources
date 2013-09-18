@@ -1,0 +1,45 @@
+---
+layout: default
+title: Checkpoints and Sessions
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight java %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB.startSession() and VesselAB.closeSession(). You can also close all open sessions by calling VesselAB.closeAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code in SignUpActivity </p>
+{% highlight java %}
+public class SignUpActivity extends Activity {
+
+    @Override
+    protected void onResume() {
+         super.onResume();
+         VesselAB.startSession("SignUp");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        VesselAB.endAllSessions();
+    }
+}
+{% endhighlight %}
+
+
+    </div>
+</div>
