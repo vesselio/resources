@@ -1,0 +1,40 @@
+---
+layout: default
+title: Logging
+categories: API
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Logging</h1>
+        
+        <p>VesselSDK provides a logging capability. It is a wrapper on top of standard android logging functionality. To enable Vessel Logger import following statement.</p>
+    
+{% highlight java %}
+import com.vessel.Log;
+{% endhighlight %}
+        <p>Vessel Log overrides standard android logging api. <a target='_blank' href='http://developer.android.com/tools/debugging/debugging-log.html#logClass'>Learn more.</a></p>
+        <p>For example:</p>
+
+{% highlight java %}
+Log.i("MyActivity", "MyClass.getView() — get item number " + position);
+{% endhighlight %}
+
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Logging</h1>
+        
+        <p>VesselFramework provides a logging capability. You can use it by calling log method as below.</p>
+{% highlight java %}
+[VesselCrashReporter log:@"Log message %@", message];
+{% endhighlight %}
+    </div>
+</div>

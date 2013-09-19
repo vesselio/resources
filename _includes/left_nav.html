@@ -1,7 +1,7 @@
 <div id='side-nav' class="side-nav">
     <ul class='list-group'>
-        <li class="list-group-item {% if page.url == /getting-started %}active{% endif %}">
-            <a href="/getting-started">Getting Started</a>
+        <li class="list-group-item ">
+            <a href="{% post_url 2013-09-07-getting-started %}">Getting Started</a>
         </li>
 
         {% for category in site.categories %}
@@ -15,11 +15,11 @@
                     {% when 'use_cases' %}
                         Use Cases
                     {% else %}
-                        category[0]
+                        {{ category[0] }}
                 {% endcase %}
             </a>
-            <ul id='{{ category[0] }}' class='collapse unstyled'>
-                {% for post in category[1] %}
+            <ul id='{{ category[0] }}' class='{% if category[0] != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+                {% for post in category[1] reversed %}
                 <li class='{% if page.url == post.url %}active{% endif %}'>
                     <a href="{{ post.url }}">{{ post.title }}</a>
                 </li>

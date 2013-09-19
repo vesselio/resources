@@ -1,0 +1,27 @@
+---
+layout: default
+title: Starting Test
+categories: vessel_command_center
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#web" data-toggle="tab">Web</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="web">
+        <h1>{{ page.title }}</h1>
+
+        <ol>
+            <li>Click on the start button.</li>
+            <img src='{{ site.baseurl }}img/ab_test/image11.png' />
+            <li>Select the application that you want to run this test on, and the percentage of users that you want to run this test on. If you have other tests running on this application, then you will be able to deploy only the remaining free users.</li>
+            <img src='{{ site.baseurl }}img/ab_test/image07.png' />
+            <li>You can add in filters to restrict the test delivery to only certain devices. Please see “Using Test Filters” section for more details. Click on Start Test button to deploy the test.</li>
+            <img src='{{ site.baseurl }}img/ab_test/image06.png' />
+            <li>Your test is now live. You can monitor the results in real time. To see the delivery of tests, check out the Trends tab.</li>
+            <img src='{{ site.baseurl }}img/ab_test/image08.png' />
+        </ol>
+    </div>
+</div>

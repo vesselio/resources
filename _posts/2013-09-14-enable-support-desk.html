@@ -1,0 +1,75 @@
+---
+layout: default
+title: Enable Support Desk
+categories: API
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Enable Support Desk</h1>
+        <p>VesselSDK comes with built in support desk as well as API's". Change both for Android an iOS categories.</p>
+
+        <h4 class='list-group-item-heading'>Step 1: Built-in support desk</h4>
+        <ol>
+            <li>To use built in support desk call following method by passing name of the Activity.</li>
+
+{% highlight java %}
+VesselSDK.openFeedbackDialog(YourActivity.this);
+{% endhighlight %}
+
+            <p>On successful integration you will see a support desk as below.</p>
+            <img src='{{ site.baseurl }}img/support_desk/feedback.png' alt='feedback screenshot' />
+        </ol>
+    </div>
+
+    <div class="tab-pane" id="ios">
+        <h1>Enable Support Desk</h1>
+        <p>VesselSDK comes with in build support desk as well as provides api’s to build your support desk.</p>
+
+        <h4 class='list-group-item-heading'>Step 1: Built-in support desk</h4>
+        <ol>
+            <li>To use built in support desk use the VesselInAppSupportViewController class.</li>
+
+{% highlight obj-c %}
+VesselInAppSupportViewController *inApp = [[VesselInAppSupportViewController alloc] init];
+    [self presentViewController:inApp animated:YES completion:nil];;
+{% endhighlight %}
+
+            <p>On successful integration you will see a support desk as below.</p>
+            <img src='{{ site.baseurl }}img/support_desk/iosupportdesk.png' alt='feedback screenshot' />
+        </ol>
+
+        <h4 class='list-group-item-heading'>Step 2: Optional Configuration</h4>
+        <p>Assign an object to the delegate property if you want to be notified when the user has finished with the interface and is ready to dismiss it.   Or To set default message, use the message property as shown below.</p>
+
+{% highlight obj-c %}
+VesselInAppSupportViewController *inApp = [[VesselInAppSupportViewController alloc] init];
+    {inApp.message = @"Your feedback here...";
+    inApp.delegate = self;
+    [self presentViewController:inApp animated:YES completion:nil];}
+{% endhighlight %}
+
+    <p>Tells the delegate that the user has dismissed the mail composition view.</p>
+
+{% highlight obj-c %}
+- (void) inAppSupportController:(VesselInAppSupportViewController*)controller
+    didFinishWithResult:(VesselInAppSupportResult)result error:(NSError*)error {
+        if (result == VesselInAppSupportResultSent) {
+        // The view controller was dismissed by tapping on the 'Send' button.
+        } else if (result == VesselInAppSupportResultCancelled) {
+        // The view controller was dismissed by tapping on the 'Cancel' button
+        }
+    }
+{% endhighlight %}
+
+    </div>
+
+</div>

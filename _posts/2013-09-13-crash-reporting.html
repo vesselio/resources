@@ -1,0 +1,44 @@
+---
+layout: default
+title: Crash Reporting
+categories: API
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Crash Reporting</h1>
+        
+        <h4 class='list-group-item-heading'>Proguard Support</h4>
+        <p>Vessel Command Center supports server side obfuscation. In case if you enabled <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>ProGuard</a> for your application then upload mapping.txt decode Obfuscated stacktraces. <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>Learn more</a>.</p>
+
+        <p>To upload mapping file, <a target='_blank' href='https://www.vessel.io/accounts/login/'>Login to command center</a> select relevant application version and click on setting icon as shown bellow.</p>
+
+        <img src='{{ site.baseurl }}img/crash_reporting/vsetting.png' alt='settings' />
+
+        <p>Once you upload mapping.txt file, Vessel command center decodes obfuscated statcktraces.</p>
+
+        <img src='{{ site.baseurl }}img/crash_reporting/proguard.png' alt='progaurd' />
+    </div>
+    <div class="tab-pane" id="ios">
+        <h1>Crash Reporting</h1>
+        <p>VesselFramework monitors and reports any unhandled exceptions. If the network is unreachable, VesselFramework saves crashes in offlne mode and reports back later to Vessel Platform.</p>
+
+        <h4 class='list-group-item-heading'>Symbolification Support</h4>
+        <p>Vessel Command Center supports server side obfuscation.. This allows the debug symbols to be stripped from the binary making the binary size smaller. For server side symbolication to work properly, you need to upload the dSYM file of the build. Refer getting started guide to enable auto uploads. Else to upload dSYM file manually refer following steps.</p>
+        <p>To upload dSYM file, <a target='_blank' href='https://www.vessel.io/accounts/login/'>login to command center</a> select relevant application version and click on setting icon as shown below.</p>
+
+        <img src='{{ site.baseurl }}img/crash_reporting/iossetting.jpeg' alt='iOS Settings' />
+
+        <p>Once you upload dSYM file, Vessel command center starts decoding obfuscated statcktraces.</p>
+
+        <img src='{{ site.baseurl }}img/crash_reporting/iosdsym.jpeg' alt='iOS Settings' />
+    </div>
+</div>

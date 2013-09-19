@@ -1,0 +1,71 @@
+---
+layout: default
+title: Game Style Test
+categories: use_cases
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>{{ page.title }}</h1>
+        <p>Mobile app companies spend millions in driving downloads, but user engagement and retention is still questionable. Distributed nature of mobile market make it even more difficult for product managers to understand what is going wrong and why people are unhappy.</p>
+        <p>To solve this problem, Vessel brings most advanced and powerful mobile set of services to efficiently eliminate the obstacles in their app’s success.</p>
+        <p>Vessel allows product managers to take informed decisions by deploying A/B experiments on mobile apps.  With Vessel command center they can control test distribution, monitor test stats like user funnel, session times and other stats in real time.  Optimized VesselSDK makes it easier to award winning variation to all userswithout app store release.</p>
+        <p>In addition to A/B, Vessel Monitor track user trends as well as bugs in real time allowing developers in team, to pin point the root cause of problem.</p>
+
+        <h4>Use Case</h4>
+        <p>Greg is the product manager at app startup, which develops mobile apps for all major platforms like iOS, Android, Windows 8. Greg’s team is planning to launch entirely new user interface for their mobile game app called as “Snakes”. Greg & his team want to run an experiment with these two variations in the same app version to monitor app usage time.</p>
+
+        <ol>
+            <li>Greg registers to the Vessel Platform and creates a basic experiment named as "BaisicTest".</li>
+            <img src='{{ site.baseurl }}img/ab_test/image03.png' />
+            <li>After creating the experiment, He adds two variations A and B giving 50% and 50% distribution weight. Goal of this experiment is to monitor usage time and monitor the number of users reaching level two. Greg also interested in monitoring a funnel to achieve this goal.</li>
+            <img src='{{ site.baseurl }}img/ab_test/image01.png' />
+            <p>Greg defines controls for each variation as bellow.</p>
+            <img src='{{ site.baseurl }}img/game_test/variationvalues.png' />
+            <li>After defining experiment in Vessel, Greg downloads VesselSDK for the instrumentation in his app. (VesselSDK supports cross platform but for convenience we are demonstrating Android SDK). Instrumentation is extremely simple as shown bellow (For further instrumentation & advanced details like session time monitoring, checkpoints please refer VesselSDK technical documentation.)</li>
+
+{% highlight java %}
+VesselSDK.setABListener(context);
+// Once experiment is loaded SDK provides variation helper methods to decides flows  
+If ( VesselSDK.whichVariation() == TestVariation.A) {
+    // Or perform certain actions .
+}else{
+    // Show Ui for variation A
+}
+// Optionally developers can look up values by keys e.g.
+VesselSDK.getValue("WallColor" ,<default failover value>);
+{% endhighlight %}
+            <p>Once test is loaded, it remains same for the entire life cycle of particular version for end user irrespective of Internet connection.  Following screen demonstrates the end user experience for each variation</p>
+            <div class='col-sm-6 col-md-6'>
+                <img src='{{ site.baseurl }}img/game_test/variationA.png' />
+            </div>
+            <div class='col-sm-6 col-md-6'>
+                <img src='{{ site.baseurl }}img/game_test/variationB.png' />
+            </div>
+        </ol>
+        <p>Once integration is done, Greg kicks of the experiments by filtering user base by location, device type or average session time etc. and immediately start monitoring the results as follows.</p>
+        <ul>
+            <li>Vessel Keeps close eye on Trends with  Daily Active Installs, Monthly Active Installs</li>
+            <img src='{{ site.baseurl }}img/game_test/test_activity.png' />
+            <li>User Engagement  with 1, 3,7,14,30 day retention and session time for each variation as follows</li>
+            <img src='{{ site.baseurl }}img/game_test/engagement.png' />
+            <li>Vessel also keeps tracks of User Flows. Platform generates user funnel to major success at each checkpoints</li>
+            <img src='{{ site.baseurl }}img/game_test/funnels.png' />
+            <li>Session time handling for each variation</li>
+            <img src='{{ site.baseurl }}img/game_test/session_times.png' />
+            <p>Above results help Greg in not understanding impact of each variation but also demonstrates funnel for each variation. E.g. Session time for variation A is significantly larger than B but users are unable to complete level one while in B average session time is less but 100 % users are able to complete level B.</p>
+            <p>After gathering more data Vessel Platform will be able to determine confidence level in each variation making it easier for Greg to make final choice for entire user base. Also at any given point of time he has control to tweak experiment without deploying new version.</p>
+            
+            <li>Rollout winner: Greg and his team monitored data and found variation B is working better. Hence they can award winning variation to entire user base without pushing any update.</li>
+
+            <img src='{{ site.baseurl }}img/game_test/rollout.png' />
+        </ul>
+
+        
+    </div>
+</div>
