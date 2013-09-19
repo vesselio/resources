@@ -1,0 +1,37 @@
+---
+layout: default
+title: Jenkins plugin
+categories: external_integration
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#web" data-toggle="tab">Web</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="web">
+        <h1>{{ page.title }}</h1>
+        <p>Need help in installing and configuring Jenkins for iOS/Android? Contact us at dev@vessel.io or call us at +1-888-650-4147 - We can help you get started.</p>
+
+        <p>You can use our Vessel Jenkins plugin to upload your APK/IPA files to Vessel directly from Jenkins. Here are the steps that you need to follow.</p>
+        <h3>Step 1: Install the Vessel Jenkins plugin</h3>
+        <p>In Jenkins, go to Manage Jenkins -> Manage Plugins -> Available tab. Search for Vessel plugin under the category of Artifact Uploaders. Select Vessel and click on <i>Install without restart</i> to install the plugin</p>
+        <p><img src='{{ site.baseurl }}img/jenkins/install_plugin.png' /></p>
+
+        <h3>Step 2: Add Upload to Vessel build step</h3>
+        <p>Configure your Android/iOS project and Add post-build action <i>Upload to Vessel</i></p>
+        <p><img src='{{ site.baseurl }}img/jenkins/add_post_build_step.png' /></p>
+
+
+        <h3>Step 3: Configure the Upload to Vessel step.</h3>
+        <p>You will need to put in your API Key, the APK/IPA file location and release notes. You can find your API key under <a href="https://www.vessel.io/settings/account/">Account Settings</a></p>
+        <p>Additionally you can enter the users/groups that you want to automatically send the version. You can also specify the location of Proguard/dSYM file. The replace flag if set will replace existing build with same version name on Vessel.</p>
+        <p>Hit Save once you are done</p>
+        <p><img src='{{ site.baseurl }}img/jenkins/configure_upload.png' /></p>
+
+        <p>Perform a build to test out if integration has worked</p>
+
+        <p>Need help in installing and configuring Jenkins for iOS/Android? Contact us at dev@vessel.io or call us at +1-888-650-4147 - We can help you get started.</p>
+    </div>
+</div>
