@@ -1,0 +1,71 @@
+---
+layout: default
+title: Instrumenting AB tests
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Instrumenting AB tests</h1>
+        <h3>Checking which AB test is active</h3>
+        <p>If you want check which AB test/variation is currently running, you can query VesselAB.whichTest() which will return the Test Name that is currently running.</p>
+        <p>Similarly we have VesselAB.whichVariation(String testName) method, which will return the variation that is currently running on this device.</p>
+        <p>There is also a convinience method VesselAB.isTestVariationRunning(String testName, TestVariation variation) which returns true if the given test and variation is running</p>
+        <p>Here is an example of how you can use this method</p>
+        
+        {% highlight java %}
+public class TestActivity extends Activity {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            // ... 
+            // Other initialization code
+            if(VesselAB.whichVariation("mytest") == TestVariation.A) {
+                // Variation A flow
+            } else if(VesselAB.whichVariation("mytest") == TestVariation.B) {
+                // Variation B flow
+            } else {
+                // Default flow
+            }
+
+        }
+        // Other code
+}
+
+{% endhighlight %}
+
+
+        <h3>Getting variation control data</h3>
+        <p>To define variation control data - See Creating A/B test</p>
+        <p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
+        <p>Eg. To change messaging on a TextView: </p>
+{% highlight java %}
+public class TestActivity extends Activity {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.test_layout);
+
+            TextView title = (TextView) findViewById(R.id.title);
+            title = VesselAB.getValue("title", getString(R.string.default_title));
+
+            // Other initialization code
+        }
+
+}
+
+{% endhighlight %}
+
+
+    </div>
+</div>
