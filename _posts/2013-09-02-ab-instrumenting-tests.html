@@ -107,8 +107,27 @@ public void onCreate(Bundle savedInstanceState) {
             Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
         </p>
 
-        <p>Instrument your landing test in your activity as follows</p>
-{% highlight java %}
+        <p>Instrument your landing test in your View Controller as follows</p>
+{% highlight obj-c %}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:) name:VesselABTestChangedNotification object:nil];
+    [VesselAB getTestWithSuccessBlock:^ (NSString *testName, VesselABTestVariation variation) {
+        NSString *nibName;
+        if (variation == VesselABTestVariationA) {
+            nibName = @"ViewControllerA";
+        } else if (variation == VesselABTestVariationB) {
+            nibName = @"ViewControllerB";
+        }
+        _viewController = [[ViewController alloc] initWithNibName:nibName bundle:nil];
+        ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = _viewController;
+        [self makeUIChanges];
+    } failureBlock:^ {
+    }];
+}
 
 {% endhighlight %}
 
@@ -125,9 +144,10 @@ B - > ‘Buy Now’ or 'Start your free trial today'
 </h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
+<p>To retrieve the variation control data, you can call [VesselAB valueForVariationVariable:@<key> defaultValue:@<default>]</p>
 <p>Eg. To change messaging on a TextView: </p>
-{% highlight java %}
+{% highlight obj-c %}
+    _viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome_text" defaultValue:@"Let's get started"];
 {% endhighlight %}
     
     </div>
