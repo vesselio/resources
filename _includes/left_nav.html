@@ -4,28 +4,59 @@
             <a href="{% post_url 2013-09-07-getting-started %}">Getting Started</a>
         </li>
 
-        {% for category in site.categories %}
         <li class='list-group-item'>
-            <a href='#{{ category[0] }}' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
-                {% case category[0] %}
-                    {% when 'api' %}
-                        API
-                    {% when 'vessel_command_center' %}
-                        A/B Test
-                    {% when 'use_cases' %}
-                        Use Cases
-                    {% else %}
-                        {{ category[0] }}
-                {% endcase %}
+            <a href='#vessel_command_center' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
+                How to A/B test?
             </a>
-            <ul id='{{ category[0] }}' class='{% if category[0] != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
-                {% for post in category[1] reversed %}
+            <ul id='vessel_command_center' class='{% if 'vessel_command_center' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+                {% for post in site.categories.vessel_command_center reversed %}
                 <li class='{% if page.url == post.url %}active{% endif %}'>
                     <a href="{{ post.url }}">{{ post.title }}</a>
                 </li>
                 {% endfor %}
             </ul>
         </li>
-        {% endfor %}
+
+        <li class='list-group-item'>
+            <a href='#api' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
+                APIs
+            </a>
+            <ul id='api' class='{% if 'api' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+                {% for post in site.categories.api reversed %}
+                <li class='{% if page.url == post.url %}active{% endif %}'>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+
+
+        <li class='list-group-item'>
+            <a href='#use_cases' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
+                Use Cases
+            </a>
+            <ul id='use_cases' class='{% if 'use_cases' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+                {% for post in site.categories.use_cases reversed %}
+                <li class='{% if page.url == post.url %}active{% endif %}'>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+
+
+
+        <li class='list-group-item'>
+            <a href='#external_integration' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
+               Third Party Integrations
+            </a>
+            <ul id='external_integration' class='{% if 'external_integration' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+                {% for post in site.categories.external_integration reversed %}
+                <li class='{% if page.url == post.url %}active{% endif %}'>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
     </ul>
 </div>

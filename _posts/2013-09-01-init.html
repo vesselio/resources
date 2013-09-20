@@ -1,0 +1,49 @@
+---
+layout: default
+title: Basic Setup 
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Basic Setup</h1>
+        <p>
+            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
+        </p>
+        <p>Import SDK in your activity.<p>
+        {% highlight java %}
+        import com.vessel.VesselAB{% endhighlight %}
+
+        <p>Add following line in your on create, onPause and onResume as follows.<p>
+
+        {% highlight java %}
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            
+            // Always show latest changes
+            VesselAB.reloadTest();
+        }
+
+        @Override
+        protected void onPause() {
+            VesselAB.onPause();
+            super.onPause();
+        }
+
+        @Override
+        protected void onResume() {
+            VesselAB.onResume();
+            super.onResume();
+        }{% endhighlight %}
+    </div>
+
+    <p>At this point you have successfully integrated VesselSDK in your application.</p>
+</div>

@@ -1,0 +1,94 @@
+---
+layout: default
+title: Instrumenting AB tests
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Instrumenting AB tests</h1>
+
+
+        <p>
+            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
+        </p>
+
+        <p>
+            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+        </p>
+
+        <h3>How to A/B test Landing Screen?</h3>
+        <p>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
+        </p>
+
+        <p>Instrument your landing test in your activity as follows</p>
+{% highlight java %}
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_main);
+
+
+        VesselAB.reloadTest();
+        VesselAB.setABListener(new ABListener() {
+
+            @Override
+            public void testNotAvailable(TestVariation arg0) {
+                // Show default screen 
+            }
+
+            @Override
+            public void testLoading() {
+                // Show loading 
+
+            }
+
+            @Override
+            public void testLoaded(TestVariation arg0) {
+                // Check which variation control is loaded 
+                // if A or B -> Show new landing screen experience 
+            }
+        });
+    }
+{% endhighlight %}
+
+
+<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
+<p> Lets assume you want to decide which message works better e.g.</p>
+
+<h4 style="color:green">
+A - > ‘Purchase Now’ or 'Sign up for free'
+</h4>
+
+<h4 style="color:blue">
+B - > ‘Buy Now’ or 'Start your free trial today'
+</h4>
+
+<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
+<p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
+<p>Eg. To change messaging on a TextView: </p>
+{% highlight java %}
+public class TestActivity extends Activity {
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+
+    ...... 
+    title = VesselAB.getValue("purchase_title", getString(R.string.default_title));
+
+    // Other initialization code, set the title to respective TextView
+}
+{% endhighlight %}
+
+
+</div>
+</div>

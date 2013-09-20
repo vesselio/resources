@@ -15,7 +15,9 @@ categories: API
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
         <h1>Crash Reporting</h1>
-        
+        <p>Vessel by default enables crash reporting for your applicaton. You can optionally enable or disable it by using following methods.</p>
+        {% highlight java %}
+        sdk.enableCrashReporting(true/false){% endhighlight %}
         <h4 class='list-group-item-heading'>Proguard Support</h4>
         <p>Vessel Command Center supports server side obfuscation. In case if you enabled <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>ProGuard</a> for your application then upload mapping.txt decode Obfuscated stacktraces. <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>Learn more</a>.</p>
 

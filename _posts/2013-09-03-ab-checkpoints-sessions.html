@@ -21,7 +21,7 @@ categories: api
 VesselAB.checkPointVisited("signedUpWithTwitter");
 {% endhighlight %}
         <h3>Adding sessions</h3>
-        <p>To track user sessions you can use VesselAB.startSession() and VesselAB.closeSession(). You can also close all open sessions by calling VesselAB.closeAllSessions()</p>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
         <p>Eg. To track a user session called as SignUp we can add the following code in SignUpActivity </p>
 {% highlight java %}
 public class SignUpActivity extends Activity {
@@ -35,7 +35,7 @@ public class SignUpActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        VesselAB.endAllSessions();
+        VesselAB.endSession("SignUp");
     }
 }
 {% endhighlight %}
