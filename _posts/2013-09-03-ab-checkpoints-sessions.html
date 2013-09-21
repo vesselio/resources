@@ -42,4 +42,28 @@ public class SignUpActivity extends Activity {
 
 
     </div>
+
+    <div class="tab-pane" id="ios">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB checkpointVisited method as show below:</p>
+{% highlight obj-c %}
+[VesselAB checkpointVisited:@"signupScreen"];
+{% endhighlight %}
+
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB startSession and endSession methods. You can also close all open sessions by calling VesselAB endAllSessions</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code</p>
+{% highlight obj-c %}
+[VesselAB startSession:@"SignUp"];
+[VesselAB endSession:@"SignUp"];
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight obj-c %}
+[VesselAB endAllSessions];
+{% endhighlight %}
+</div>
+
+
 </div>
