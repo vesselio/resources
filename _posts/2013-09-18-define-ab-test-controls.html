@@ -1,0 +1,35 @@
+---
+layout: default
+title: Define Test Control
+categories: vessel_command_center
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#web" data-toggle="tab">Vessel Command Center</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="web">
+        <h1>{{ page.title }}</h1>
+        
+        <ul class='unstyled'>
+            <li><strong>Prerequisites: </strong></li>
+            <li>You have already registered and integrated the Vessel SDK in the Application.</li>
+        </ul>
+        <ol>
+            <li>
+                <h3> Step 1 - Variation Control Distribution</h3>
+                Variation is a formal technique where test is given in an altered form for incoming user. Ideally equal distribution produces better results.
+
+                You can change the distribution of variation for a given test. By default, it is set to 50-50% We recommend that you use this distribution to ensure that results are statistically significant. </li>
+                <img src='{{ site.baseurl }}img/ab_test/image01.png' />
+                <h3> Step 2 - Define Variation Controls (Optional) </h3>
+                <P>You can also add in Variation Control. Variation controls allow you associate data to each variation which will be made available to the devices.</p>
+                <img src='{{ site.baseurl }}img/ab_test/image04.png' />
+            </ol>
+            <p><strong>Where to go from here: </strong></p>
+            <p>To use your test devices to ensure that variations are working properly - Please See Using Test Devices.</p>
+            <p>Click next to see how to start your A/B test.</p>
+        </div>
+    </div>

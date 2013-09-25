@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Add Test Devices
+title: Configure Test Devices
 categories: vessel_command_center
 ---
 <ul class="nav nav-tabs" id="os-tabs">
     <li class="active">
         <a href="#android" data-toggle="tab">Android</a>
     </li>
-    <!--li>
+    <li>
         <a href="#ios" data-toggle="tab">iOS</a>
-    </li-->
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -40,7 +40,17 @@ android-sdk\platform-tools>adb logcat
         </ol>
 
     </div>
-    <!--div class="tab-pane" id="ios">
-        <h1>Logging</h1>
-    </div-->
+    <div class="tab-pane" id="ios">
+        <h1>Test device</h1>
+        <h4>You can configure test devices here. This functionality is used to test different AB testing variations.</h4>
+
+        <h3>Add Test device</h3>
+        <ol>
+          <li>Install debug build of your application on emulator or device. You should have integrated VesselSDK.</li>
+          <li>In log view, look for "To add this device as test device, visit https://ab.vessel.io/testdevice/activate/12343" as below.</li>
+          <img src='{{ site.baseurl }}img/add_test_device/AddTestDeviceiOS.png' alt='Add test device' />
+            
+            <li>Copy and paste activation url in browser to activate this device as test device. On successful activation you can use this device to deliver specific variation. To learn more visit use test devices section.</li>
+        </ol>
+    </div>
 </div>
