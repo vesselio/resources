@@ -118,17 +118,26 @@ public void onCreate(Bundle savedInstanceState) {
 
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:) name:VesselABTestChangedNotification object:nil];
+    
+    // Get Test 
     [VesselAB getTestWithSuccessBlock:^ (NSString *testName, VesselABTestVariation variation) {
         NSString *nibName;
+    
         if (variation == VesselABTestVariationA) {
+            // Show Variation A
             nibName = @"ViewControllerA";
+    
         } else if (variation == VesselABTestVariationB) {
+    
+            // Show Variation B or go to default screen.
             nibName = @"ViewControllerB";
         }
+    
         _viewController = [[ViewController alloc] initWithNibName:nibName bundle:nil];
-        ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = _viewController;
-        [self makeUIChanges];
-    } failureBlock:^ {
+     
+        // You other set up
+      failureBlock:^ {
+    
     }];
 }
 
