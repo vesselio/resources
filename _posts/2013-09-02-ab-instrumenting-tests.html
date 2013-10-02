@@ -125,17 +125,13 @@ public void onCreate(Bundle savedInstanceState) {
     
         if (variation == VesselABTestVariationA) {
             // Show Variation A
-            nibName = @"ViewControllerA";
     
         } else if (variation == VesselABTestVariationB) {
     
             // Show Variation B or go to default screen.
-            nibName = @"ViewControllerB";
         }
     
-        _viewController = [[ViewController alloc] initWithNibName:nibName bundle:nil];
-     
-        // You other set up
+        // other set up
       failureBlock:^ {
     
     }];

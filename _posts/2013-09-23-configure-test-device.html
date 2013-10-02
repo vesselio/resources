@@ -1,0 +1,28 @@
+---
+layout: default
+title: Configure Test Device
+categories: vessel_command_center
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#commandcenter" data-toggle="tab">Vessel Command Ceneter</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="commandcenter">
+        <h1>Configure test device</h1>
+        <p>In order verify all variations or A/B test code path you can configure your test devices here. Before you configure test devices, first register device as Test device.</p>
+
+        <ol>
+            <li>Select the A/B test and click on configire Test devices tab.</li>
+            <img src='{{ site.baseurl }}img/add_test_device/configure_test_device.png' alt='Add test device' />
+
+            <li>Now you can configire Test devices and ask platform deliver perticular variation.</li>
+            <img src='{{ site.baseurl }}img/add_test_device/select_variation.png' alt='Add test device' />
+            
+            <li>Now wait 10-15 min and reinstall your app on test device again. Test device will receive configured variation each time.</li>
+        </ol>
+    </div>
+
+</div>
