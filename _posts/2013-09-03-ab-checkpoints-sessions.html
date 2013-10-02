@@ -10,6 +10,9 @@ categories: api
     <li>
         <a href="#ios" data-toggle="tab">iOS</a>
     </li>
+    <li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -65,5 +68,36 @@ public class SignUpActivity extends Activity {
 {% endhighlight %}
 </div>
 
+    <div class="tab-pane" id="phonegap">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
+{% highlight obj-c %}
+// e.g. If user signUp with facebook then you can report checkpoint as follows
+vesselab.reportCheckpoint(
+    function(){}, 
+    function(error){ console.log("error "+ error)}, 
+    'signUpWithFacebook');
+        
+{% endhighlight %}
+
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight obj-c %}
+
+// E.g. if user enters in level1 then simply call startSession method.
+vesselab.startSession(
+    function(){},
+    function(error){console.log("error "+ error)}, 
+    'level1');
+
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight obj-c %}
+[VesselAB endAllSessions];
+{% endhighlight %}
+</div>
 
 </div>

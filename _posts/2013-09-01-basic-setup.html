@@ -10,6 +10,9 @@ categories: api
     <li>
         <a href="#ios" data-toggle="tab">iOS</a>
     </li>
+    <li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -19,68 +22,114 @@ categories: api
             <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
         </p>
         <p>Import SDK in your activity.<p>
-        {% highlight java %}
-        import com.vessel.VesselAB{% endhighlight %}
+{% highlight java %}
+import com.vessel.VesselAB{% endhighlight %}
 
-        <p>Add following line in your on create, onPause and onResume as follows.<p>
+<p>Add following line in your on create, onPause and onResume as follows.<p>
 
-        {% highlight java %}
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            
-            // Always show latest changes
-            VesselAB.reloadTest();
-        }
+{% highlight java %}
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        @Override
-        protected void onPause() {
-            VesselAB.onPause();
-            super.onPause();
-        }
+    // Always show latest changes
+    VesselAB.reloadTest();
+}
 
-        @Override
-        protected void onResume() {
-            VesselAB.onResume();
-            super.onResume();
-        }{% endhighlight %}
-   
+@Override
+protected void onPause() {
+    VesselAB.onPause();
+    super.onPause();
+}
+
+@Override
+protected void onResume() {
+    VesselAB.onResume();
+    super.onResume();
+}{% endhighlight %}
+
     <p>At this point you have successfully integrated VesselSDK in your application.</p>   
-    </div>
+</div>
 
 
 
 
 <div class="tab-pane" id="ios">
   <h1>Basic Setup</h1>
-        <p>
-            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
-        </p>
-        <p>Import SDK in your ViewController</p>
-        {% highlight obj-c %}
+  <p>
+    <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
+</p>
+<p>Import SDK in your ViewController</p>
+{% highlight obj-c %}
 #import <Vessel/Vessel.h>
-        {% endhighlight %}
-			<p>Add the following code in the <b>viewDidLoad</b> method</p>
-        {% highlight obj-c %}
+{% endhighlight %}
+<p>Add the following code in the <b>viewDidLoad</b> method</p>
+{% highlight obj-c %}
 - (void) viewDidLoad
 {
   [super viewDidLoad];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:)
-    name:VesselABTestChangedNotification object:nil];
+  name:VesselABTestChangedNotification object:nil];
   [VesselAB getTestWithSuccessBlock:^(NSString *testName, VesselABTestVariation variation)
-    {
-      // Make your UI changes here depending on the variation returned the server.!
-    } failureBlock:^ {
-    }];
+  {
+  // Make your UI changes here depending on the variation returned the server.!
+} failureBlock:^ {
+}];
 }
-        {% endhighlight %}
+{% endhighlight %}
 <p>Define a method named <b>testChanged</b> which listens for changes to the test</p>			
-        {% highlight obj-c %}
+{% highlight obj-c %}
 - (void) testChanged:(NSNotification*)notification {
-  // Call the reloadTest to update the in-memory variables with the new test parameters.
-  [VesselAB reloadTest];
+// Call the reloadTest to update the in-memory variables with the new test parameters.
+[VesselAB reloadTest];
 }
-        {% endhighlight %}
-    <p>At this point you have successfully integrated VesselSDK in your application.</p>   
+{% endhighlight %}
+<p>At this point you have successfully integrated VesselSDK in your application.</p>   
 </div>
+
+<div class="tab-pane" id="phonegap">
+</div>
+<h1>Basic Setup</h1>
+<p>
+    <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-09-07-getting-started %}'>Learn more.</a>
+</p>
+<p>
+    Attach Event listener on "deviceready" method as follows
+</p>
+{% highlight obj-c %}
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+     document.addEventListener("pause", onPause, false);
+     document.addEventListener("resume", onResume, false);
+    // Now safe to use the PhoneGap API
+
+    // Initialize Vessel A/B testing platform. You can simply initialize it once.
+    var YOUR_SECRET_KEY = 'YOUR_APP_KEY';
+    vesselab.initialize(
+            function(){console.log("VesselSDK Init done.");},
+            function(error){ console.log("an error occurred:" + error); },
+            YOUR_SECRET_KEY
+    );
+
+
+    // Set Vessel AB listener, in other pages.
+    vesselab.setABListener(function(testVariation){
+            console.log("Test is available");
+        }, function(error){
+            console.log("Test is not available");
+    });
+}
+
+ // Handle the resume event
+function onResume() {
+    vesselab.resume(function(){}, function(error){})
+}
+
+// Handle the pause event
+function onPause() {
+    vesselab.pause(function(){}, function(error){})
+}
+{% endhighlight %}
+<p>
 </div>
 
