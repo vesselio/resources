@@ -1,0 +1,201 @@
+---
+layout: default
+title: Getting Started
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+    <li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Getting started with Vessel</h1>
+        
+        <h4 class='list-group-item-heading'>Step 1: Download</h4>
+        <ol>
+            <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
+            <li>Add your application</li>
+            <li>Get Vessel Secret Key</a></li>
+        </ol>
+        
+        <h4 class='list-group-item-heading'>Step 2: Install</h4>
+        <ol>
+            <li>Unzip the downloaded vesselsdk.zip</li>
+            <li>Import the vesselsdk.jar into your existing Android project, by extracting it into your "libs" folder.</li>
+            <li>If your project does not already have a "libs" folder, create one at the root of the project by right-clicking the project and choosing "New" and then "Folder.</li>
+        </ol>
+
+        <h4 class='list-group-item-heading'>Step 3: Integrate</h4>
+        <p>Your app must request the "INTERNET" and "ACCESS_NETWORK_STATE" permissions, if it isn't doing so already. Add following lines in your AndoridManifest.xml file before application tag:</p>
+
+        {% highlight java %}
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+        {% endhighlight %}
+
+        <h4 class='list-group-item-heading'>Step 4</h4>
+        <p>Add following import statement in your Activity before setContentView or in Application Context</p>
+
+        {% highlight java %}
+        import com.vessel.VesselSDK;
+
+        public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        // Initialise Vessel 
+        VesselSDK.initialize(getApplicationContext(), secretKey); 
+        setContentView(R.layout.main);
+        .......
+        //Your code goes here
+    }
+    {% endhighlight %}
+
+    <h4 class='list-group-item-heading'>Step 5 (Optional)</h4>
+    <p>In case if you are using <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>ProGuard</a> for your application, then add following lines in your proguard.cfg file, It will be located inside your project folder.It will exclude VesselSDK from obfuscation process.</p>
+
+    {% highlight java %}
+    -dontwarn com.vessel.* 
+    -dontnote com.vessel.*
+    -keep class com.vessel.** { *; }
+    {% endhighlight %}
+
+    <p>At this point you have successfully integrated VesselSDK in your application , to test the integration build and install application on your test device or on simulator. Proceed to next tutorial, enable in-app support desk.</p>
+
+</div>
+
+<div class="tab-pane" id="ios">
+
+    <h1>Getting started with Vessel</h1>
+
+    <h4 class='list-group-item-heading'>Step 1: Download</h4>
+    <ol>
+        <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
+        <li>Add your application</li>
+        <li>Get Vessel Secret Key as well as <a href='https://www.vessel.io/static/files/Vessel.framework.zip'>Download Vessel Framework</a>.</li>
+    </ol>
+
+    <h4 class='list-group-item-heading'>Step 2: Install</h4>
+    <ol>
+        <li>Make sure you are using the latest version of Xcode (v4.6+) and targeting iOS 4.3 or higher.</li>
+        <li>Unzip the file you downloaded and drag the Vessel.framework folder into your Xcode project folder target.</li>
+        <img src='{{ site.baseurl }}img/getting_started/iostep1.jpg' alt='iOS step 1'/>
+        <li>Make sure the 'Copy items to destination's group folder' checkbox is checked and the target to be added to is selected.</li>
+        <img src='{{ site.baseurl }}img/getting_started/iostep2.jpg' alt='iOS step 2'/>
+    </ol>
+
+
+    <h4 class='list-group-item-heading'>Step 3: Integrate</h4>
+    <p>Make sure you include the Vessel library headers in every file where you use Vessel. Initialize Vessel as below, preferably in the beginning of your application delegates application:didFinishLaunchingWithOptions:</p>
+
+    {% highlight obj-c %}
+    #import  <Vessel/Vessel.h>
+
+    - (BOOL) application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [Vessel initializeWithAppSecret:@"Vessel app key"];
+    [VesselCrashReporter enableCrashReporting]
+}
+{% endhighlight %}
+
+<h4 class='list-group-item-heading'>Step 4: Enable Server Side Symbolification</h4>
+<p>Vessel supports server side symbolication. This allows the debug symbols to be stripped from the binary making the binary size smaller. For server side symbolication to work properly, you need to upload the dSYM file of the build. This can be automated by adding following script to the 'Build Phases'.</p>
+<ol>
+    <li>Click on your target.</li>
+    <li>Click on the 'Build Phases' tab.</li>
+    <li>Click and hold down your left mouse button on 'Add Build Phase' button at the bottom right corner of the window.</li>
+    <li>In the menu that appears, click on 'Add Run Script'.</li>
+    <li>'Run Script' panel gets added to the 'Build Phases'. Make sure that the 'Run Script' phase is the last one in the 'Build Phases'. You can rearrange the phases by drag-dropping the build phase panels.</li>
+    <li>Copy following string in the text box below the text box that containing text / bin/sh!</li>
+
+    {% highlight obj-c %}
+    ./Vessel.framework/Resources/upload.sh YOUR_APP_SECRET_KEY
+    {% endhighlight %}
+
+    <img src='{{ site.baseurl }}img/getting_started/iostep4.jpg' alt='iOS step 4'/>
+</ol>
+
+<h4 class='list-group-item-heading'>Step 5: </h4>
+<p>You will need to link 'SystemConfiguration.framework' & 'AdSupport.framework' (for iOS7) with your target. If you already linked these two frameworks, you can skip this step.</p>
+
+<ol>
+    <li>Click on your target.</li>
+    <li>Click on the 'Build Phases' tab.</li>
+    <li>Expand the 'Link Binary With Libraries' panel.</li>
+    <li>Click on the '+' button.</li>
+    <img src='{{ site.baseurl }}img/getting_started/iostep5.jpg' alt='iOS step 5'/>
+    <li>Type 'systemconfiguration' in the search bar.</li>
+    <li>Select 'SystemConfiguration.framework' from the list.</li>
+    <li>Click on the 'Add' button.</li>
+    <li>Type 'addsupport' in the search bar.</li>
+    <li>Select 'AdSupport.framework' from the list.</li>
+    <li>Click on the 'Add' button.</li>
+    <img src='{{ site.baseurl }}img/getting_started/iostep6.jpg' alt='iOS step 6'/>
+</ol>
+</div>
+<div class="tab-pane" id="phonegap">
+     <h1>Getting started with Vessel</h1>
+        <h4 class='list-group-item-heading'>Step 1: Download</h4>
+        <ol>
+            <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
+            <li>Add your application</li>
+            <li>Get Vessel Secret Key</a></li>
+        </ol>
+<h4 class='list-group-item-heading'>Step 1:Add plugin to you project.</h4>
+{% highlight obj-c %}
+$ phonegap local plugin add https://github.com/vesselio/PhoneGapPlugin.git
+
+// To ensure if its added correctly execute following command
+$phonegap local plugin list
+[phonegap] com.vessel.abplugin 
+
+//Soon it will be available in official plugin directory.
+{% endhighlight %} 
+
+<h4 class='list-group-item-heading'>Step 2: Initlize Vessel A/B Platform.</h4>
+<p>
+    After adding plugin open your main / index.html file and add 
+</p>
+
+<p>
+    Attach Event listener on "deviceready" method as follows
+</p>
+{% highlight obj-c %}
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    // Now safe to use the PhoneGap API
+
+    // Initialize Vessel A/B testing platform. You can simply initialize it once.
+    var YOUR_SECRET_KEY = 'YOUR_APP_KEY';
+    vesselab.initialize(
+            function(){console.log("VesselSDK Init done.");},
+            function(error){ console.log("an error occurred:" + error); },
+            YOUR_SECRET_KEY
+    );
+}
+{% endhighlight %} 
+
+<h4 class='list-group-item-heading'>Step 3: For iOS platform.</h4>
+<p>In case if you experience any problem while building your application for iOS platform then verify</p>
+<ol>
+    <li>
+        Make sure Vessel.Framework is correctly linked, If not link it from libs folder of plugin.
+    </li>
+    <li>
+        Make sure libsqlite3.dylib is correctly linked, If not click of Build Settings > Link Binary with Libraries and add libsqlite3.dylib.
+    </li>
+    <li>
+        If its still giving you problem, then go to  Build Settings > Compile Sources settings. And make sure VesselPlugin.m is listed their. If its missing please add VesselPlugin.m in your project.
+    </li>
+</ol>
+</div>
+</div>
