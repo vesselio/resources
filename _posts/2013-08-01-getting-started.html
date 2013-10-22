@@ -205,22 +205,29 @@ function onDeviceReady() {
 </div>
 
 <div class="tab-pane" id="titanium">
+
   <h1>Getting started with Vessel</h1>
+<br/>
   <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key.</h4>
+  <p>
   <ol>
     <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
     <li>Add your application</li>
     <li>Get Vessel Secret Key</a></li>
   </ol>
+  </p>
+<br/>
 
   <h4 class='list-group-item-heading'>Step 2: Get the Android and iOS Modules</h4>
+  <p>
         <ol>
             <li>Download the <a href='https://files.vessel.io/titanium-android'>Android</a> and <a href="">iOS</a>Modules.</li>
             <li>Drag the .zip files from the download location into the project, placing it at the root of the project. Choose to "Copy Files".</li>
         </ol>
-
+  </p>
+<br/>
         <h4 class='list-group-item-heading'>Step 3: Add module entry to tiapp.xml</h4>
-        Open the tiapp.xml and add the following entries.
+        <p>Open the tiapp.xml and add the following entries.</p>
         {% highlight xml %}
 <modules>
   <!-- Other modules can be present here -->
@@ -228,7 +235,7 @@ function onDeviceReady() {
   <module platform="iphone" version="1.0">io.vessel</module>
 </modules>
         {% endhighlight %} 
-
+<br/>
         <h4 class='list-group-item-heading'>Step 4: Initialize Vessel A/B Platform.</h4>
 <p>
   After adding module, VesselSDK should be initialized in app.js as follows.
@@ -237,38 +244,6 @@ function onDeviceReady() {
 var VesselSDK = require('io.vessel');
 VesselSDK.initialize('<secret_key>');
         {% endhighlight %} 
-<p>
-    Attach Event listener on "deviceready" method as follows
-</p>
-{% highlight obj-c %}
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-    // Now safe to use the PhoneGap API
-
-    // Initialize Vessel A/B testing platform. You can simply initialize it once.
-    var YOUR_SECRET_KEY = 'YOUR_APP_KEY';
-    vesselab.initialize(
-            function(){console.log("VesselSDK Init done.");},
-            function(error){ console.log("an error occurred:" + error); },
-            YOUR_SECRET_KEY
-    );
-}
-{% endhighlight %} 
-
-<h4 class='list-group-item-heading'>Step 3: For iOS platform.</h4>
-<p>In case if you experience any problem while building your application for iOS platform then verify</p>
-<ol>
-    <li>
-        Make sure Vessel.Framework is correctly linked, If not link it from libs folder of plugin.
-    </li>
-    <li>
-        Make sure libsqlite3.dylib is correctly linked, If not click of Build Settings > Link Binary with Libraries and add libsqlite3.dylib.
-    </li>
-    <li>
-        If its still giving you problem, then go to  Build Settings > Compile Sources settings. And make sure VesselPlugin.m is listed their. If its missing please add VesselPlugin.m in your project.
-    </li>
-</ol>
 </div>
 
 </div>
