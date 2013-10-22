@@ -13,6 +13,9 @@ categories: api
     <li>
         <a href="#phonegap" data-toggle="tab">Phone Gap</a>
     </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -226,4 +229,67 @@ vesselab.getValue(
 
 </div>
 
+    <div class="tab-pane active" id="titanium">
+        <h1>Instrumenting AB tests</h1>
+        <p>
+            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel Titanium SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
+        </p>
+
+        <p>
+            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+        </p>
+
+        <h3>How to A/B test Landing Screen?</h3>
+        <p>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
+        </p>
+
+        <p>Instrument your apps.js to load the screen as follows</p>
+{% highlight javascript %}
+var VesselSDK = require('io.vessel');
+VesselSDK.setABListener(function(resp) {
+        // Sucessfully loaded AB Test
+        if (e.test == 'testName') {
+        if (e.variation == 'A') {
+          // Open variation A UI
+        } else if (e.variation == 'B') {
+          // Open variation B UI
+        }
+      }
+    },
+    function (e) {
+        // No test
+        Ti.API.info('Vessel No test');
+        // Open default.
+    }
+);
+{% endhighlight %}
+<br/>
+<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
+<p> Lets assume you want to decide which message works better e.g.</p>
+
+<h4 style="color:green">
+A - > ‘Purchase Now’ or 'Sign up for free'
+</h4>
+
+<h4 style="color:blue">
+B - > ‘Buy Now’ or 'Start your free trial today'
+</h4>
+
+<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
+<p>To retrieve the variation control data, you can call VesselSDK.getValue(key, default) method.</p>
+<p>Eg. To change messaging on a Button: </p>
+{% highlight javascript %}
+var VesselSDK = require('io.vessel');
+var buy = Ti.UI.createButton({
+  title: VesselSDK.getValue('purchase_title', 'Buy'),
+  height:Ti.UI.SIZE,
+});
+{% endhighlight %}
+
 </div>
+
+
+</div>
+
+
