@@ -13,6 +13,10 @@ categories: api
     <li>
         <a href="#phonegap" data-toggle="tab">Phone Gap</a>
     </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
+
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -98,6 +102,32 @@ vesselab.startSession(
 {% highlight obj-c %}
 [VesselAB endAllSessions];
 {% endhighlight %}
-</div>
+   </div>
+
+
+    <div class="tab-pane" id="titanium">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
+{% highlight javascript %}
+// e.g. If user signUp with facebook then you can report checkpoint as follows
+VesselSDK.checkPointVisited('signUp');
+{% endhighlight %}
+
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight javascript %}
+VesselSDK.startSession('signUpWithFacebook');
+// When user completes signup or cancels signup
+VesselSDK.endSession('signUpWithFacebook');
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded.</p>
+{% highlight javascript %}
+VesselSDK.endAllSessions();
+{% endhighlight %}
+   </div>
+
 
 </div>
