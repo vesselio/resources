@@ -106,10 +106,10 @@ title: Getting Started
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [Vessel initializeWithAppSecret:@"Vessel app key"];
-    [VesselCrashReporter enableCrashReporting]
 }
 {% endhighlight %}
 
+<!--
 <h4 class='list-group-item-heading'>Step 4: Enable Server Side Symbolification</h4>
 <p>Vessel supports server side symbolication. This allows the debug symbols to be stripped from the binary making the binary size smaller. For server side symbolication to work properly, you need to upload the dSYM file of the build. This can be automated by adding following script to the 'Build Phases'.</p>
 <ol>
@@ -126,8 +126,8 @@ title: Getting Started
 
     <img src='{{ site.baseurl }}img/getting_started/iostep4.jpg' alt='iOS step 4'/>
 </ol>
-
-<h4 class='list-group-item-heading'>Step 5: </h4>
+-->
+<h4 class='list-group-item-heading'>Step 4: </h4>
 <p>You will need to link 'SystemConfiguration.framework' & 'AdSupport.framework' (for iOS7) with your target. If you already linked these two frameworks, you can skip this step.</p>
 
 <ol>
@@ -145,7 +145,7 @@ title: Getting Started
     <img src='{{ site.baseurl }}img/getting_started/iostep6.jpg' alt='iOS step 6'/>
 </ol>
 
-<h4 class='list-group-item-heading'>Step 6: Add sqlite3 library </h4>
+<h4 class='list-group-item-heading'>Step 5: Add sqlite3 library </h4>
 <p>Add libsqlite3.dylib as a static library to be linked to your project. You can add it from Build Phases -> Link Binary with Libraries</p>
 </div>
 <div class="tab-pane" id="phonegap">
