@@ -70,7 +70,7 @@ public class SignUpActivity extends Activity {
 vesselab.startSession(
     function(){},
     function(error){console.log("error "+ error)}, 
-    'level1');
+    "level1");
 
 {% endhighlight %}
 
@@ -86,9 +86,9 @@ vesselab.startSession(
         <p>To track user sessions you can use startSession and endSession methods. </p>
         <p>Eg. To track a user sessions, you can add the following code</p>
 {% highlight javascript %}
-VesselSDK.startSession('signUpWithFacebook');
+VesselSDK.startSession("signUpWithFacebook");
 // When user completes signup or cancels signup
-VesselSDK.endSession('signUpWithFacebook');
+VesselSDK.endSession("signUpWithFacebook");
 {% endhighlight %}
 
 <p>You can add the following code when your app goes to background to ensure that session times are correctly recorded.</p>
