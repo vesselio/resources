@@ -16,7 +16,9 @@ categories: api
     <li>
         <a href="#titanium" data-toggle="tab">Titanium</a>
     </li>
-
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -129,5 +131,30 @@ VesselSDK.endAllSessions();
 {% endhighlight %}
    </div>
 
+    <div class="tab-pane" id="winphone">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight csharp %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code</p>
+{% highlight java %}
+    public partial class HomePage : PhoneApplicationPage
+    {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            VesselAB.startSession("SignUp");
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            VesselAB.endSession("SignUp");
+        }
+    }
+{% endhighlight %}
+    </div>
 
 </div>

@@ -16,6 +16,9 @@ categories: api
     <li>
         <a href="#titanium" data-toggle="tab">Titanium</a>
     </li>
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -24,11 +27,11 @@ categories: api
         <p>
             <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
         </p>
-        <p>Import SDK in your activity.<p>
+        <p>Import SDK in your activity.</p>
 {% highlight java %}
 import com.vessel.VesselAB{% endhighlight %}
 
-<p>Add following line in your on create, onPause and onResume as follows.<p>
+<p>Add following line in your on create, onPause and onResume as follows.</p>
 
 {% highlight java %}
 protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +136,6 @@ function onPause() {
     vesselab.pause(function(){}, function(error){})
 }
 {% endhighlight %}
-<p>
 </div>
 
 <!-- Titanium -->
@@ -145,6 +147,50 @@ function onPause() {
 <p>
   Titanium SDK does not require any additional setup.
 </p>
+</div>
+
+<!-- Windows Phone -->
+
+<div class="tab-pane" id="winphone">
+        <h1>Basic Setup</h1>
+        <p>
+            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
+        </p>
+        <p>Import SDK in your app.xaml.cs</p>
+{% highlight csharp %}
+using Vessel;{% endhighlight %}
+
+<p>Add following calls in the handlers, replacing "secret_key" with your secret key from vessel.io</p>
+
+{% highlight csharp %}
+    private void Application_Launching(object sender, LaunchingEventArgs e)
+    {
+        VesselSDK.initialize("secret_key");
+    }
+
+    // Code to execute when the application is activated (brought to foreground)
+    // This code will not execute when the application is first launched
+    private void Application_Activated(object sender, ActivatedEventArgs e)
+    {
+        VesselAB.onActivated();
+    }
+
+    // Code to execute when the application is deactivated (sent to background)
+    // This code will not execute when the application is closing
+    private void Application_Deactivated(object sender, DeactivatedEventArgs e)
+    {
+        VesselAB.onDeactivated();
+    }
+
+    // Code to execute when the application is closing (eg, user hit Back)
+    // This code will not execute when the application is deactivated
+    private void Application_Closing(object sender, ClosingEventArgs e)
+    {
+        VesselAB.onClosing();
+    }
+{% endhighlight %}
+
+    <p>At this point you have successfully integrated VesselSDK in your application.</p>   
 </div>
 
 </div>

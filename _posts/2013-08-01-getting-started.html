@@ -15,7 +15,9 @@ title: Getting Started
     <li>
         <a href="#titanium" data-toggle="tab">Titanium</a>
     </li>
-
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li>
 </ul>
 
 <div id='os-tab-content' class="tab-content">
@@ -248,5 +250,30 @@ var VesselSDK = require('io.vessel');
 VesselSDK.initialize('<secret_key>');
         {% endhighlight %} 
 </div>
+
+    <div class="tab-pane" id="winphone">
+        <h1>Getting started with Vessel</h1>
+        
+        <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key.</h4>
+        <p>
+        <ol>
+            <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
+            <li>Add your application</li>
+            <li>Get Vessel Secret Key</a></li>
+        </ol>
+        </p>
+        
+        <h4 class='list-group-item-heading'>Step 2: Install</h4>
+        <p>
+        <ol>
+            <li>Download VesselSDK.dll</li>
+            <li>Add VesselSDK.dll to your project's references in Visual Studio.</li>
+        </ol>
+        </p>
+
+        <h4 class='list-group-item-heading'>Step 3: Permissions</h4>
+        <p>In WMAppManifest.xml go to Capabilities tab. Make sure the following options are enabled: ID_CAP_IDENTITY_DEVICE, ID_CAP_NETWORKING </p>
+
+    </div>
 
 </div>
