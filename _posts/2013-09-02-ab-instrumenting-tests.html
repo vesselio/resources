@@ -36,10 +36,11 @@ categories: api
 
         <h3>How to A/B test Landing Screen?</h3>
         <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
         </p>
 
         <p>Instrument your landing test in your activity as follows</p>
+
 {% highlight java %}
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,79 +71,70 @@ categories: api
     }
 {% endhighlight %}
 
+        <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
+        <p> Lets assume you want to decide which message works better e.g.</p>
 
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
+        <h4 style="color:green">
+            A - > ‘Purchase Now’ or 'Sign up for free'
+        </h4>
 
-<h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
+        <h4 style="color:blue">
+            B - > ‘Buy Now’ or 'Start your free trial today'
+        </h4>
 
-<h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
-
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
-<p>Eg. To change messaging on a TextView: </p>
+        <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
+        <p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
+        <p>Eg. To change messaging on a TextView: </p>
 {% highlight java %}
-public class TestActivity extends Activity {
+        ...... 
+        title = VesselAB.getValue("purchase_title", getString(R.string.default_title));
 
-@Override
-public void onCreate(Bundle savedInstanceState) {
-
-    ...... 
-    title = VesselAB.getValue("purchase_title", getString(R.string.default_title));
-
-    // Other initialization code, set the title to respective TextView
-}
+        // Other initialization code, set the title to respective TextView
 {% endhighlight %}
-
 
 </div>
 
-    <div class="tab-pane" id="ios">
-        <h1>Instrumenting AB tests</h1>
-        <p>
-            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
-        </p>
+<div class="tab-pane" id="ios">
+    <h1>Instrumenting AB tests</h1>
+    <p>
+        <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
+    </p>
 
-        <p>
-            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
-        </p>
+    <p>
+        Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+    </p>
 
-        <h3>How to A/B test Landing Screen?</h3>
-        <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
-        </p>
+    <h3>How to A/B test Landing Screen?</h3>
+    <p>
+        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
+    </p>
 
-        <p>Instrument your landing test in your View Controller as follows</p>
+    <p>Instrument your landing test in your View Controller as follows</p>
 {% highlight obj-c %}
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    - (void)viewDidLoad
+    {
+        [super viewDidLoad];
 
-    // Do any additional setup after loading the view from its nib.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:) name:VesselABTestChangedNotification object:nil];
-    
-    // Get Test 
-    [VesselAB getTestWithSuccessBlock:^ (NSString *testName, VesselABTestVariation variation) {
-        NSString *nibName;
-    
-        if (variation == VesselABTestVariationA) {
+        // Do any additional setup after loading the view from its nib.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:) name:VesselABTestChangedNotification object:nil];
+
+        // Get Test 
+        [VesselAB getTestWithSuccessBlock:^ (NSString *testName, VesselABTestVariation variation) {
+            NSString *nibName;
+
+            if (variation == VesselABTestVariationA) {
             // Show Variation A
-    
-        } else if (variation == VesselABTestVariationB) {
-    
-            // Show Variation B or go to default screen.
-        }
-    
-        // other set up
-      failureBlock:^ {
-    
-    }];
-}
 
+            } else if (variation == VesselABTestVariationB) {
+
+            // Show Variation B or go to default screen.
+            }
+
+            // other set up
+        failureBlock:^ {
+
+        }];
+    }
 {% endhighlight %}
 
 
@@ -150,59 +142,55 @@ public void onCreate(Bundle savedInstanceState) {
 <p> Lets assume you want to decide which message works better e.g.</p>
 
 <h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
+    A - > ‘Purchase Now’ or 'Sign up for free'
 </h4>
 
 <h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
+    B - > ‘Buy Now’ or 'Start your free trial today'
 </h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call [VesselAB valueForVariationVariable:@<key> defaultValue:@<default>]</p>
 <p>Eg. To change messaging on a TextView: </p>
 {% highlight obj-c %}
-    _viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome_text" defaultValue:@"Let's get started"];
+_viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome_text" defaultValue:@"Let's get started"];
 {% endhighlight %}
-    
-    </div>
 
-    <div class="tab-pane" id="phonegap">
-        <h1>Instrumenting AB tests</h1>
+</div>
 
+<div class="tab-pane" id="phonegap">
+    <h1>Instrumenting AB tests</h1>
+    <p>
+        <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
+    </p>
 
-        <p>
-            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
-        </p>
+    <p>
+        Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+    </p>
 
-        <p>
-            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
-        </p>
+    <h3>How to A/B test Landing Screen?</h3>
+    <p>
+        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
+    </p>
 
-        <h3>How to A/B test Landing Screen?</h3>
-        <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
-        </p>
-
-        <p>Instrument your landing test in as follows</p>
+    <p>Instrument your landing test in as follows</p>
 {% highlight java %}
-document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
+    function onDeviceReady() {
     
-
-    // Set Vessel AB listener, in other pages.
-    vesselab.setABListener(function(testVariation){
-
+        // Set Vessel AB listener, in other pages.
+        vesselab.setABListener(function(testVariation){
             // Now test is available you can check which variation is looded 
             // and decide 
             console.log("Test is available");
-    
-        }, function(error){
-            console.log("Test is not available");
+            
+            }, function(error){
+                console.log("Test is not available");
 
-            // Show default screen 
-    });
-}
+        // Show default screen 
+        });
+    }
 {% endhighlight %}
 
 
@@ -210,84 +198,88 @@ function onDeviceReady() {
 <p> Lets assume you want to decide which message works better e.g.</p>
 
 <h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
+    A - > ‘Purchase Now’ or 'Sign up for free'
 </h4>
 
 <h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
+    B - > ‘Buy Now’ or 'Start your free trial today'
 </h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call vesslab.getValue(function(value){},function(error){}, key, defaultValue) method.</p>
 <p>Eg. To change welcome message call</p>
 {% highlight java %}
-
-
-vesselab.getValue(
-    function(value){ console.log("Value " + value)},
-    function(error){ console.log("error "+ error)}, 
-    'welcome_text', 'Welcome to the world');
+    vesselab.getValue(
+        function(value){ console.log("Value " + value)},
+        function(error){ console.log("error "+ error)}, 
+        "welcome_text", "Welcome to the world");
 {% endhighlight %}
-
 
 </div>
 
-    <div class="tab-pane" id="titanium">
-        <h1>Instrumenting AB tests</h1>
-        <p>
-            <strong>Prerequisites: </strong>You have already registered and integrated the Vessel Titanium SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
-        </p>
 
-        <p>
-            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
-        </p>
+<div class="tab-pane" id="titanium">
+    <h1>Instrumenting AB tests</h1>
+    <p>
+        <strong>Prerequisites: </strong>You have already registered and integrated the Vessel Titanium SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
+    </p>
 
-        <h3>How to A/B test Landing Screen?</h3>
-        <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-09-17-how-it-works %}'>click here</a>
-        </p>
+    <p>
+        Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+    </p>
 
-        <p>Instrument your apps.js to load the screen as follows</p>
+    <h3>How to A/B test Landing Screen?</h3>
+    <p>
+        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
+    </p>
+
+    <p>Instrument your apps.js to load the screen as follows</p>
 {% highlight javascript %}
-var VesselSDK = require('io.vessel');
-VesselSDK.setABListener(function(resp) {
+    var VesselSDK = require('io.vessel');
+
+    VesselSDK.setABListener(function(resp) {
+
         // Sucessfully loaded AB Test
         if (e.test == 'testName') {
-        if (e.variation == 'A') {
-          // Open variation A UI
-        } else if (e.variation == 'B') {
-          // Open variation B UI
+            
+            if (e.variation == 'A') {
+            
+            // Open variation A UI
+            
+            } else if (e.variation == 'B') {
+            
+            // Open variation B UI
+            }
         }
-      }
     },
     function (e) {
         // No test
         Ti.API.info('Vessel No test');
         // Open default.
-    }
-);
+        }
+    );
 {% endhighlight %}
 <br/>
 <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
 <p> Lets assume you want to decide which message works better e.g.</p>
 
 <h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
+    A - > ‘Purchase Now’ or 'Sign up for free'
 </h4>
 
 <h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
+    B - > ‘Buy Now’ or 'Start your free trial today'
 </h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call VesselSDK.getValue(key, default) method.</p>
 <p>Eg. To change messaging on a Button: </p>
 {% highlight javascript %}
-var VesselSDK = require('io.vessel');
-var buy = Ti.UI.createButton({
-  title: VesselSDK.getValue('purchase_title', 'Buy'),
-  height:Ti.UI.SIZE,
-});
+    var VesselSDK = require('io.vessel');
+    var buy = Ti.UI.createButton({
+                title: VesselSDK.getValue('purchase_title', 'Buy'),
+                height:Ti.UI.SIZE,
+                });
 {% endhighlight %}
 
 </div>

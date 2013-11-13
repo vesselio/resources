@@ -1,0 +1,127 @@
+---
+layout: default
+title: Report Checkpoints
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+    <li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
+
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Checkpoints</h1>
+        <h3>What is the checkpoint?</h3>
+        <p>
+            Checkpoint are the specific events that users perform within your application - for example, logging with Facebook, Bought coins, watching video or level one completed etc. 
+        </p>
+        <p>
+            Checkpoints help you in understanding how users are interacting in given variation. It is important key performance indicator in  comparing conversations for each test variation. 
+        </p>
+
+        <h3>How to report a checkpoint?</h3>
+        <p>
+            Example below will show you how to track checkpoints in Landing Screen test. (You can track checkpoints as per your needs.) 
+            In the landing screen test, we are interested in understanding conversions (number of people signed up) using social sign up vs email sign ups. To track this funnel you can track checkpoints as shown bellow.
+        </p>
+            <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
+       
+       <h3>Checkpoint Api</h3>
+
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight java %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+    </div>
+
+    <div class="tab-pane" id="ios">
+         <h1>Checkpoints</h1>
+        <h3>What is the checkpoint?</h3>
+        <p>
+            Checkpoint are the specific events that users perform within your application - for example, logging with Facebook, Bought coins, watching video or level one completed etc. 
+        </p>
+        <p>
+            Checkpoints help you in understanding how users are interacting in given variation. It is important key performance indicator in  comparing conversations for each test variation. 
+        </p>
+
+        <h3>How to report a checkpoint?</h3>
+        <p>
+            Example below will show you how to track checkpoints in Landing Screen test. (You can track checkpoints as per your needs.) 
+            In the landing screen test, we are interested in understanding conversions (number of people signed up) using social sign up vs email sign ups. To track this funnel you can track checkpoints as shown bellow.
+        </p>
+            <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
+       
+       <h3>Checkpoint Api</h3>   <p>To report a checkpoint, you can use the VesselAB checkpointVisited method as show below:</p>
+{% highlight obj-c %}
+[VesselAB checkpointVisited:@"signupScreen"];
+{% endhighlight %}
+
+      
+
+</div>
+
+    <div class="tab-pane" id="phonegap">
+        <h1>Checkpoints</h1>
+        <h3>What is the checkpoint?</h3>
+        <p>
+            Checkpoint are the specific events that users perform within your application - for example, logging with Facebook, Bought coins, watching video or level one completed etc. 
+        </p>
+        <p>
+            Checkpoints help you in understanding how users are interacting in given variation. It is important key performance indicator in  comparing conversations for each test variation. 
+        </p>
+
+        <h3>How to report a checkpoint?</h3>
+        <p>
+            Example below will show you how to track checkpoints in Landing Screen test. (You can track checkpoints as per your needs.) 
+            In the landing screen test, we are interested in understanding conversions (number of people signed up) using social sign up vs email sign ups. To track this funnel you can track checkpoints as shown bellow.
+        </p>
+            <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
+       
+       <h3>Checkpoint Api</h3>     <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
+{% highlight obj-c %}
+// e.g. If user signUp with facebook then you can report checkpoint as follows
+    vesselab.reportCheckpoint(
+        function(){}, 
+        function(error){ 
+            console.log("error "+ error)}, 
+        "signUpWithFacebook");
+        
+{% endhighlight %}
+   </div>
+
+
+<div class="tab-pane" id="titanium">
+        <h1>Checkpoints</h1>
+        <h3>What is the checkpoint?</h3>
+        <p>
+            Checkpoint are the specific events that users perform within your application - for example, logging with Facebook, Bought coins, watching video or level one completed etc. 
+        </p>
+        <p>
+            Checkpoints help you in understanding how users are interacting in given variation. It is important key performance indicator in  comparing conversations for each test variation. 
+        </p>
+
+        <h3>How to report a checkpoint?</h3>
+        <p>
+            Example below will show you how to track checkpoints in Landing Screen test. (You can track checkpoints as per your needs.) 
+            In the landing screen test, we are interested in understanding conversions (number of people signed up) using social sign up vs email sign ups. To track this funnel you can track checkpoints as shown bellow.
+        </p>
+            <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
+       
+       <h3>Checkpoint Api</h3>     <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
+{% highlight javascript %}
+// e.g. If user signUp with facebook then you can report checkpoint as follows
+VesselSDK.checkPointVisited('signUp');
+{% endhighlight %}
+</div>
+</div>
