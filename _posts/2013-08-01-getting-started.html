@@ -272,7 +272,24 @@ VesselSDK.initialize('<secret_key>');
         </p>
 
         <h4 class='list-group-item-heading'>Step 3: Permissions</h4>
-        <p>In WMAppManifest.xml go to Capabilities tab. Make sure the following options are enabled: ID_CAP_IDENTITY_DEVICE, ID_CAP_NETWORKING </p>
+        <p>In WMAppManifest.xml go to Capabilities tab. Make sure the following options are enabled:</p>
+        {% highlight csharp %}
+    ID_CAP_IDENTITY_DEVICE
+    ID_CAP_NETWORKING
+    ID_CAP_LOCATION{% endhighlight %} 
+        
+        <h4 class='list-group-item-heading'>Step 4: Integrate</h4>
+        <p>Add sdk initialization to App.xaml.cs:</p>
+        {% highlight csharp %}
+using Vessel;
+    
+    ...
+    
+    private void Application_Launching(object sender, LaunchingEventArgs e)
+    {
+        VesselSDK.initialize("secret_key");
+    }
+        {% endhighlight %} 
 
     </div>
 
