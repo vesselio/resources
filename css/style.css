@@ -140,3 +140,7 @@ ul img {
     .footer a {
       color: #fff;
       font-size: 14px; } }
+
+.container .col-md-9 img{
+  margin: 20px 0;
+}
