@@ -105,6 +105,9 @@ img {
   .navbar .nav.nav-ctas li a {
     padding: 6px 12px; }
 
+.list-group .list-group-item.active a {
+  color: #fff; }
+
 ul.horizonal {
   padding-left: 0px; }
   ul.horizonal li {
@@ -140,7 +143,3 @@ ul img {
     .footer a {
       color: #fff;
       font-size: 14px; } }
-
-.container .col-md-9 img{
-  margin: 20px 0;
-}
