@@ -31,3 +31,12 @@
     }
 
 }
+.list-group{
+    .list-group-item{
+        &.active{
+            a{
+                color: #fff;
+            }
+        }
+    }
+}

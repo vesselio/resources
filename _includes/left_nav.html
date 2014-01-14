@@ -1,8 +1,11 @@
 <div id='side-nav' class="side-nav">
     <ul class='list-group'>
-        <li class="list-group-item ">
-            <a href="{% post_url 2013-08-01-getting-started %}">Getting Started</a>
+
+        {% for post in site.categories.getting_started reversed %}
+        <li class='list-group-item {% if page.url == post.url %}active{% endif %}'>
+            <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
+        {% endfor %}
 
         <li class='list-group-item'>
             <a href='#vessel_command_center' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
@@ -30,7 +33,6 @@
             </ul>
         </li>
 
-
         <li class='list-group-item'>
             <a href='#use_cases' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
                 Use Cases
@@ -57,8 +59,6 @@
             </ul>
         </li>
 
-
-
         <li class='list-group-item'>
             <a href='#external_integration' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
                Third Party Integrations
@@ -71,5 +71,12 @@
                 {% endfor %}
             </ul>
         </li>
+        {% for post in site.categories.downloads reversed %}
+        <li class='list-group-item {% if page.url == post.url %}active{% endif %}'>
+            <a href='{% post_url 2014-01-07-downloads %}'>
+               Downloads
+            </a>
+        </li>
+        {% endfor %}
     </ul>
 </div>

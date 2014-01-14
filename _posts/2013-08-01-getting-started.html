@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Getting Started
+categories: getting_started
 ---
 <ul class="nav nav-tabs" id="os-tabs">
     <li class="active">
@@ -28,11 +29,15 @@ title: Getting Started
         <ol>
             <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
             <li>Add your application</li>
-            <li>Get Vessel Secret Key</a></li>
+            <li>Get Vessel Secret Key</li>
         </ol>
         
         <h4 class='list-group-item-heading'>Step 2: Install</h4>
         <ol>
+            <li>Download the Android SDK: 
+                <br />
+                <a class='btn btn-primary' href="https://www.vessel.io/static/files/vesselsdk.zip">Android SDK</a>
+            </li>
             <li>Unzip the downloaded vesselsdk.zip</li>
             <li>Import the vesselsdk.jar into your existing Android project, by extracting it into your "libs" folder.</li>
             <li>If your project does not already have a "libs" folder, create one at the root of the project by right-clicking the project and choosing "New" and then "Folder.</li>
@@ -85,11 +90,15 @@ title: Getting Started
     <ol>
         <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
         <li>Add your application</li>
-        <li>Get Vessel Secret Key as well as <a href='https://www.vessel.io/static/files/Vessel.framework.zip'>Download Vessel Framework</a>.</li>
+        <li>Get Vessel Secret Key</li>
     </ol>
 
     <h4 class='list-group-item-heading'>Step 2: Install</h4>
     <ol>
+        <li>Download the iOS framework: 
+            <br />
+            <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>iOS Framework</a>
+        </li>
         <li>Make sure you are using the latest version of Xcode (v4.6+) and targeting iOS 4.3 or higher.</li>
         <li>Unzip the file you downloaded and drag the Vessel.framework folder into your Xcode project folder target.</li>
         <img src='{{ site.baseurl }}img/getting_started/iostep1.jpg' alt='iOS step 1'/>
@@ -157,9 +166,13 @@ title: Getting Started
             <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
             <li>Add your application</li>
             <li>Get Vessel Secret Key</a></li>
+            <li>Download the Android SDK and iOS framework: 
+                <br />
+                <a class='btn btn-primary' href="https://www.vessel.io/static/files/vesselsdk.zip">Android SDK</a> &nbsp; <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>iOS Framework</a>
+            </li>
         </ol>
 
-<h4 class='list-group-item-heading'>Step 1:Add plugin to you project.</h4>
+<h4 class='list-group-item-heading'>Step 1: Add plugin to you project</h4>
 {% highlight obj-c %}
 $ phonegap local plugin add https://github.com/vesselio/PhoneGapPlugin.git
 
@@ -170,7 +183,7 @@ $phonegap local plugin list
 //Soon it will be available in official plugin directory.
 {% endhighlight %} 
 
-<h4 class='list-group-item-heading'>Step 2: Initialize Vessel A/B Platform.</h4>
+<h4 class='list-group-item-heading'>Step 2: Initialize Vessel A/B Platform</h4>
 <p>
     After adding plugin open your main / index.html file and add 
 </p>
@@ -194,7 +207,7 @@ function onDeviceReady() {
 }
 {% endhighlight %} 
 
-<h4 class='list-group-item-heading'>Step 3: For iOS platform.</h4>
+<h4 class='list-group-item-heading'>Step 3: For iOS platform</h4>
 <p>In case if you experience any problem while building your application for iOS platform then verify</p>
 <ol>
     <li>
@@ -213,7 +226,7 @@ function onDeviceReady() {
 
   <h1>Getting started with Vessel</h1>
 <br/>
-  <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key.</h4>
+  <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key</h4>
   <p>
   <ol>
     <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
@@ -226,7 +239,10 @@ function onDeviceReady() {
   <h4 class='list-group-item-heading'>Step 2: Get the Android and iOS Modules</h4>
   <p>
         <ol>
-            <li>Download the <a href="https://vessel.io/static/files/io.vessel-android-1.0.zip">Android</a> and <a href="https://vessel.io/static/files/io.vessel-iphone-1.0.zip">iOS</a> Titanium Modules.</li>
+            <li>Download Titanium Modules: 
+                <br />
+                <a class='btn btn-primary' href="https://vessel.io/static/files/io.vessel-android-1.0.zip">Android Module</a> &nbsp; <a class='btn btn-primary' href="https://vessel.io/static/files/io.vessel-iphone-1.0.zip">iOS Module</a>
+            </li>
             <li>Drag the .zip files from the download location into the project, placing it at the root of the project. Choose to "Copy Files".</li>
         </ol>
   </p>
@@ -241,7 +257,7 @@ function onDeviceReady() {
 </modules>
         {% endhighlight %} 
 <br/>
-        <h4 class='list-group-item-heading'>Step 4: Initialize Vessel A/B Platform.</h4>
+        <h4 class='list-group-item-heading'>Step 4: Initialize Vessel A/B Platform</h4>
 <p>
   After adding module, VesselSDK should be initialized in app.js as follows.
 </p>
@@ -254,25 +270,46 @@ VesselSDK.initialize('<secret_key>');
     <div class="tab-pane" id="winphone">
         <h1>Getting started with Vessel</h1>
         
-        <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key.</h4>
+        <h4 class='list-group-item-heading'>Step 1: Register Application and get Secret Key</h4>
         <p>
         <ol>
             <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
             <li>Add your application</li>
-            <li>Get Vessel Secret Key</a></li>
+            <li>Get Vessel Secret Key</li>
         </ol>
         </p>
         
         <h4 class='list-group-item-heading'>Step 2: Install</h4>
         <p>
         <ol>
-            <li>Download VesselSDK.dll</li>
+            <li>
+                Download the Windows SDK: 
+                <br />
+                <a class='btn btn-primary' href="https://www.vessel.io/static/files/vessel-wp.zip">Windows SDK</a>
+            </li>
             <li>Add VesselSDK.dll to your project's references in Visual Studio.</li>
         </ol>
         </p>
 
         <h4 class='list-group-item-heading'>Step 3: Permissions</h4>
-        <p>In WMAppManifest.xml go to Capabilities tab. Make sure the following options are enabled: ID_CAP_IDENTITY_DEVICE, ID_CAP_NETWORKING </p>
+        <p>In WMAppManifest.xml go to Capabilities tab. Make sure the following options are enabled:</p>
+        {% highlight csharp %}
+    ID_CAP_IDENTITY_DEVICE
+    ID_CAP_NETWORKING
+    ID_CAP_LOCATION{% endhighlight %} 
+        
+        <h4 class='list-group-item-heading'>Step 4: Initialize Vessel A/B Platform</h4>
+        <p>Add sdk initialization to App.xaml.cs:</p>
+        {% highlight csharp %}
+using Vessel;
+    
+    ...
+    
+    private void Application_Launching(object sender, LaunchingEventArgs e)
+    {
+        VesselSDK.initialize("secret_key");
+    }
+        {% endhighlight %} 
 
     </div>
 
