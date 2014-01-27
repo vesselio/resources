@@ -85,92 +85,94 @@ categories: getting_started
 <div class="tab-pane" id="ios">
 
     <h1>Getting started with Vessel</h1>
+    <ol id='ios-onboarding' class='tab-pane'>
+        <li class='margin-top-25'>
+            <p class='lead'>Setup</p>
+            <ol>
+                <li>
+                    <p>
+                        <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>Download framework</a>
+                    </p>
+                </li>
+                <li>
+                    <p>Make sure you are using the latest version of Xcode (v4.6+) and targeting iOS 4.3 or higher.</p>
+                </li>
+                <li>
+                    <p>Unzip the file you downloaded and drag the Vessel.framework folder into your Xcode project folder target.</p>
+                    <p>
+                        <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/add_framework.png' alt='iOS step 1'/>
+                    </p>
+                </li>
+                <li>
+                    <p>Make sure the 'Copy items to destination's group folder' checkbox is checked and the target to be added to is selected.</p>
+                    <p>
+                        <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/copy_framework.png' alt='iOS step 2'/>
+                    </p>
+                </li>
+            </ol>
+        </li>
+        <li class='margin-top-50'>
+            <p class='lead'>Add dependencies</p>
+            <ol>
+                <li><p>Select you project in Xcode</p></li>
+                <li><p>Click your app name under Targets</p></li>
+                <li><p>Next select the Build Phases tab</p></li>
+                <li>
+                    <p>Then expand Link Binary With Libraries as shown below</p>
+                    <p>
+                        <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/Link_binaries.png' alt='iOS step 5'/>
+                    </p>
+                </li>
+                <li><p>Click the plus (+) button in the lower left of the Link Binary With Libraries.</p></li>
+                <li>
+                    <p>Add the following libriaes:</p>
+                    <p>
+                        <ul>
+                            <li>SystemConfiguration.framework</li>
+                            <li>AdSupport.framework</li>
+                            <li>libsqlite3.dylib</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/iostep6.jpg' alt='iOS step 6'/>
+                    </p>
+                </li>
+            </ol>
+        </li>
+        <li class='margin-top-50'>
+            <p class='lead'>Integrate</p>
+            <p>Open your AppDelegate.m file. Import Vessel header as shown below.</p>
 
+{% highlight objc %}
+#import  &lt;Vessel/Vessel.h&gt;
+{% endhighlight %}
+
+            <p>To initilize Vessel Framework add the following line inside the application:didFinishLaunchingWithOptions function.</p>
+
+{% highlight objc %}
+[Vessel initializeWithAppSecret:@"SECRET_KEY"];
+{% endhighlight %}
+
+        </li>
+        <li class='margin-top-50'>
+            <p class='lead'>Build and run your app.</p>
+        </li>
+    </ol>
+</div>
+
+
+<div class="tab-pane" id="phonegap">
+    <h1>Getting started with Vessel</h1>
     <h4 class='list-group-item-heading'>Step 1: Download</h4>
     <ol>
         <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
         <li>Add your application</li>
-        <li>Get Vessel Secret Key</li>
-    </ol>
-
-    <h4 class='list-group-item-heading'>Step 2: Install</h4>
-    <ol>
-        <li>Download the iOS framework: 
+        <li>Get Vessel Secret Key</a></li>
+        <li>Download the Android SDK and iOS framework: 
             <br />
-            <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>iOS Framework</a>
+            <a class='btn btn-primary' href="https://www.vessel.io/static/files/vesselsdk.zip">Android SDK</a> &nbsp; <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>iOS Framework</a>
         </li>
-        <li>Make sure you are using the latest version of Xcode (v4.6+) and targeting iOS 4.3 or higher.</li>
-        <li>Unzip the file you downloaded and drag the Vessel.framework folder into your Xcode project folder target.</li>
-        <img src='{{ site.baseurl }}img/getting_started/iostep1.jpg' alt='iOS step 1'/>
-        <li>Make sure the 'Copy items to destination's group folder' checkbox is checked and the target to be added to is selected.</li>
-        <img src='{{ site.baseurl }}img/getting_started/iostep2.jpg' alt='iOS step 2'/>
     </ol>
-
-
-    <h4 class='list-group-item-heading'>Step 3: Integrate</h4>
-    <p>Make sure you include the Vessel library headers in every file where you use Vessel. Initialize Vessel as below, preferably in the beginning of your application delegates application:didFinishLaunchingWithOptions:</p>
-
-    {% highlight obj-c %}
-    #import  <Vessel/Vessel.h>
-
-    - (BOOL) application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    [Vessel initializeWithAppSecret:@"Vessel app key"];
-}
-{% endhighlight %}
-
-<!--
-<h4 class='list-group-item-heading'>Step 4: Enable Server Side Symbolification</h4>
-<p>Vessel supports server side symbolication. This allows the debug symbols to be stripped from the binary making the binary size smaller. For server side symbolication to work properly, you need to upload the dSYM file of the build. This can be automated by adding following script to the 'Build Phases'.</p>
-<ol>
-    <li>Click on your target.</li>
-    <li>Click on the 'Build Phases' tab.</li>
-    <li>Click and hold down your left mouse button on 'Add Build Phase' button at the bottom right corner of the window.</li>
-    <li>In the menu that appears, click on 'Add Run Script'.</li>
-    <li>'Run Script' panel gets added to the 'Build Phases'. Make sure that the 'Run Script' phase is the last one in the 'Build Phases'. You can rearrange the phases by drag-dropping the build phase panels.</li>
-    <li>Copy following string in the text box below the text box that containing text / bin/sh!</li>
-
-    {% highlight obj-c %}
-    ./Vessel.framework/Resources/upload.sh YOUR_APP_SECRET_KEY
-    {% endhighlight %}
-
-    <img src='{{ site.baseurl }}img/getting_started/iostep4.jpg' alt='iOS step 4'/>
-</ol>
--->
-<h4 class='list-group-item-heading'>Step 4: </h4>
-<p>You will need to link 'SystemConfiguration.framework' & 'AdSupport.framework' (for iOS7) with your target. If you already linked these two frameworks, you can skip this step.</p>
-
-<ol>
-    <li>Click on your target.</li>
-    <li>Click on the 'Build Phases' tab.</li>
-    <li>Expand the 'Link Binary With Libraries' panel.</li>
-    <li>Click on the '+' button.</li>
-    <img src='{{ site.baseurl }}img/getting_started/iostep5.jpg' alt='iOS step 5'/>
-    <li>Type 'systemconfiguration' in the search bar.</li>
-    <li>Select 'SystemConfiguration.framework' from the list.</li>
-    <li>Click on the 'Add' button.</li>
-    <li>Type 'addsupport' in the search bar.</li>
-    <li>Select 'AdSupport.framework' from the list.</li>
-    <li>Click on the 'Add' button.</li>
-    <img src='{{ site.baseurl }}img/getting_started/iostep6.jpg' alt='iOS step 6'/>
-</ol>
-
-<h4 class='list-group-item-heading'>Step 5: Add sqlite3 library </h4>
-<p>Add libsqlite3.dylib as a static library to be linked to your project. You can add it from Build Phases -> Link Binary with Libraries</p>
-</div>
-<div class="tab-pane" id="phonegap">
-     <h1>Getting started with Vessel</h1>
-        <h4 class='list-group-item-heading'>Step 1: Download</h4>
-        <ol>
-            <li>Login to <a target='_blank' href='https://www.vessel.io/accounts/login/'>Vessel Command Center</a></li>
-            <li>Add your application</li>
-            <li>Get Vessel Secret Key</a></li>
-            <li>Download the Android SDK and iOS framework: 
-                <br />
-                <a class='btn btn-primary' href="https://www.vessel.io/static/files/vesselsdk.zip">Android SDK</a> &nbsp; <a class='btn btn-primary' href='https://www.vessel.io/static/files/vessel-ios.zip'>iOS Framework</a>
-            </li>
-        </ol>
 
 <h4 class='list-group-item-heading'>Step 1: Add plugin to you project</h4>
 {% highlight obj-c %}
