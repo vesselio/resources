@@ -22,7 +22,7 @@
 
         <li class='list-group-item'>
             <a href='#api' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
-                APIs
+                A/B testing APIs
             </a>
             <ul id='api' class='{% if 'api' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
                 {% for post in site.categories.api reversed %}
@@ -61,7 +61,7 @@
 
         <li class='list-group-item'>
             <a href='#external_integration' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
-               Third Party Integrations
+               Beta Testing API's
             </a>
             <ul id='external_integration' class='{% if 'external_integration' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
                 {% for post in site.categories.external_integration reversed %}
