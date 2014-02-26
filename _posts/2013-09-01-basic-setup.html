@@ -72,21 +72,22 @@ protected void onResume() {
 {% highlight obj-c %}
 - (void) viewDidLoad
 {
-  [super viewDidLoad];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:)
-  name:VesselABTestChangedNotification object:nil];
-  [VesselAB getTestWithSuccessBlock:^(NSString *testName, VesselABTestVariation variation)
-  {
-  // Make your UI changes here depending on the variation returned the server.!
-} failureBlock:^ {
-}];
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:)
+    name:VesselABTestChangedNotification object:nil];
+  
+    [VesselAB getTestWithSuccessBlock:^(NSString *testName, VesselABTestVariation variation)
+    {
+        // Make your UI changes here depending on the variation returned the server.!
+    } failureBlock:^ {
+    }];
 }
 {% endhighlight %}
 <p>Define a method named <b>testChanged</b> which listens for changes to the test</p>			
 {% highlight obj-c %}
 - (void) testChanged:(NSNotification*)notification {
-// Call the reloadTest to update the in-memory variables with the new test parameters.
-[VesselAB reloadTest];
+    // Call the reloadTest to update the in-memory variables with the new test parameters.
+    [VesselAB reloadTest];
 }
 {% endhighlight %}
 <p>At this point you have successfully integrated VesselSDK in your application.</p>   
