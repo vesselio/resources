@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Instrumenting AB tests
+title: Onboarding AB test
 categories: api
 ---
 <ul class="nav nav-tabs" id="os-tabs">
@@ -23,7 +23,7 @@ categories: api
 
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
-        <h1>Instrumenting AB tests</h1>
+        <h1>Onboarding AB test</h1>
 
 
         <p>
@@ -70,32 +70,10 @@ categories: api
         });
     }
 {% endhighlight %}
-
-        <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-        <p> Lets assume you want to decide which message works better e.g.</p>
-
-        <h4 style="color:green">
-            A - > ‘Purchase Now’ or 'Sign up for free'
-        </h4>
-
-        <h4 style="color:blue">
-            B - > ‘Buy Now’ or 'Start your free trial today'
-        </h4>
-
-        <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-        <p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
-        <p>Eg. To change messaging on a TextView: </p>
-{% highlight java %}
-        ...... 
-        title = VesselAB.getValue("purchase_title", getString(R.string.default_title));
-
-        // Other initialization code, set the title to respective TextView
-{% endhighlight %}
-
 </div>
 
 <div class="tab-pane" id="ios">
-    <h1>Instrumenting AB tests</h1>
+    <h1>Onboarding AB test</h1>
     <p>
         <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
     </p>
@@ -136,30 +114,10 @@ categories: api
         }];
     }
 {% endhighlight %}
-
-
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
-
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
-
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
-
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call [VesselAB valueForVariationVariable:@<key> defaultValue:@<default>]</p>
-<p>Eg. To change messaging on a TextView: </p>
-{% highlight obj-c %}
-_viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome_text" defaultValue:@"Let's get started"];
-{% endhighlight %}
-
 </div>
 
 <div class="tab-pane" id="phonegap">
-    <h1>Instrumenting AB tests</h1>
+    <h1>Onboarding AB test</h1>
     <p>
         <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
     </p>
@@ -192,34 +150,11 @@ _viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome
         });
     }
 {% endhighlight %}
-
-
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
-
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
-
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
-
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call vesslab.getValue(function(value){},function(error){}, key, defaultValue) method.</p>
-<p>Eg. To change welcome message call</p>
-{% highlight java %}
-    vesselab.getValue(
-        function(value){ console.log("Value " + value)},
-        function(error){ console.log("error "+ error)}, 
-        "welcome_text", "Welcome to the world");
-{% endhighlight %}
-
 </div>
 
 
 <div class="tab-pane" id="titanium">
-    <h1>Instrumenting AB tests</h1>
+    <h1>Onboarding AB test</h1>
     <p>
         <strong>Prerequisites: </strong>You have already registered and integrated the Vessel Titanium SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
     </p>
@@ -260,32 +195,10 @@ _viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome
     );
 {% endhighlight %}
 <br/>
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
-
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
-
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
-
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call VesselSDK.getValue(key, default) method.</p>
-<p>Eg. To change messaging on a Button: </p>
-{% highlight javascript %}
-    var VesselSDK = require('io.vessel');
-    var buy = Ti.UI.createButton({
-                title: VesselSDK.getValue('purchase_title', 'Buy'),
-                height:Ti.UI.SIZE,
-                });
-{% endhighlight %}
-
 </div>
 
 <div class="tab-pane" id="winphone">
-        <h1>Instrumenting AB tests</h1>
+        <h1>Onboarding AB test</h1>
 
 
         <p>
@@ -339,30 +252,6 @@ _viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome
         };
 
     }
-{% endhighlight %}
-
-
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
-
-<h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
-
-<h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
-
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call VesselAB.getValue(string key, string default) method.</p>
-<p>Eg. To change messaging on a TextBlock: </p>
-{% highlight csharp %}
-
-    ...... 
-    var title = VesselAB.getValue("purchase_title", "default title");
-
-    // Other initialization code, set the title to respective TextBlock
-}
 {% endhighlight %}
 
 </div>
