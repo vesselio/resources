@@ -76,11 +76,14 @@ categories: api
     B - > ‘Buy Now’ or 'Start your free trial today'
 </h4>
 
-<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-<p>To retrieve the variation control data, you can call [VesselAB valueForVariationVariable:@<key> defaultValue:@<default>]</p>
+<p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is <strng>"purchase_title"</strong> then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>Eg. To change messaging on a TextView: </p>
 {% highlight obj-c %}
-_viewController.lblSubtitle.text = [VesselAB valueForVariationVariable:@"welcome_text" defaultValue:@"Let's get started"];
+
+// This is method will find variable from given test. If test is available and active, 
+// then will return variation value else will return default value.
+
+_viewController.lblSubtitle.text =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"VARIATION_KEY" defaultValue:@"DEFAULT_VALUE"];
 {% endhighlight %}
 
 </div>

@@ -62,13 +62,21 @@ VesselAB.checkPointVisited("signedUpWithTwitter");
         </p>
             <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
        
-       <h3>Checkpoint Api</h3>   <p>To report a checkpoint, you can use the VesselAB checkpointVisited method as show below:</p>
+       <h3>Checkpoint Api</h3>   <p>To report a checkpoint, you can use the VesselAB reportCheckPoint method as show below:</p>
 {% highlight obj-c %}
-[VesselAB checkpointVisited:@"signupScreen"];
+
+// This method will report checkpoint to all active tests.
+[VesselAB reportCheckPoint:@"signupScreen"];
+
+// This method will report checkpoint to only onboarding A/B test. 
+[VesselAB reportCheckPoint:@"signupScreen" forTest:@"onboarding"];
+
+You can also send additional metadata along with checkpoints. E.g. We would like to send user information along with checkpoint.
+
+// This will report a checkpoint to only social email test if it is active with meta data.
+NSDictionary *userMetaData = @{@"userId" : @123455 , @"paidUer": @YES};
+[VesselAB reportCheckPoint:@"Facebook Login" forTest:@"socialemail" with:userMetaData];
 {% endhighlight %}
-
-      
-
 </div>
 
     <div class="tab-pane" id="phonegap">

@@ -1,0 +1,129 @@
+---
+layout: default
+title: Test Filtering
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+    <li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li>
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Track user sessions</h1>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code in SignUpActivity </p>
+{% highlight java %}
+public class SignUpActivity extends Activity {
+
+    @Override
+    protected void onResume() {
+         super.onResume();
+         VesselAB.startSession("SignUp");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        VesselAB.endSession("SignUp");
+    }
+}
+{% endhighlight %}
+
+
+    </div>
+
+    <div class="tab-pane" id="ios">
+        <h1>Apply Test Filters</h1>
+        <p>Vessel makes it easy to segment your customers. To do so, first navigate to your test in the dashboard. Then add filters inbuilt or custom filters. <a href="{% post_url 2013-08-03-creating-ab-test %}">Learn more</a></p>
+        <p>
+         Vessel provides <strong>inbuilt filters like App,SDK Version, Device model, manufacture, New vs Returning users etc.</strong> But you can define your own custom filters also. 
+        </p>
+
+E.g. Deliver test to all paid users who have not bought any coins in your game. To add a customer to this segment, set custom filters as follows.</p>
+{% highlight obj-c %}
+Vessel *sharedInstance = [Vessel sharedInstance];
+[sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
+{% endhighlight %}
+
+<p> </p>
+</div>
+
+    <div class="tab-pane" id="phonegap">
+        <h1>Track user sessions</h1>
+
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight obj-c %}
+
+// E.g. if user enters in level1 then simply call startSession method.
+vesselab.startSession(
+    function(){},
+    function(error){console.log("error "+ error)}, 
+    "level1");
+
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight obj-c %}
+[VesselAB endAllSessions];
+{% endhighlight %}
+   </div>
+
+
+    <div class="tab-pane" id="titanium">
+        <h1>Track user sessions</h1>
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight javascript %}
+VesselSDK.startSession("signUpWithFacebook");
+// When user completes signup or cancels signup
+VesselSDK.endSession("signUpWithFacebook");
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded.</p>
+{% highlight javascript %}
+VesselSDK.endAllSessions();
+{% endhighlight %}
+   </div>
+
+    <div class="tab-pane" id="winphone">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight csharp %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code</p>
+{% highlight java %}
+    public partial class HomePage : PhoneApplicationPage
+    {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            VesselAB.startSession("SignUp");
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            VesselAB.endSession("SignUp");
+        }
+    }
+{% endhighlight %}
+    </div>
+
+</div>

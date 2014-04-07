@@ -89,30 +89,29 @@ categories: api
 
     <p>Instrument your landing test in your View Controller as follows</p>
 {% highlight obj-c %}
-    - (void)viewDidLoad
-    {
-        [super viewDidLoad];
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
 
-        // Do any additional setup after loading the view from its nib.
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChanged:) name:VesselABTestChangedNotification object:nil];
+    // This method will find test with given name and will return available test variation.
+    [VesselAB getVariationForTest:@"YOUR_TEST_NAME" WithSuccessBlock:^(NSString *testName, VesselABTestVariation variation) {
+        
+        // Activate test before we start using it.
+        [VesselAB activateTest:testName];
 
-        // Get Test 
-        [VesselAB getTestWithSuccessBlock:^ (NSString *testName, VesselABTestVariation variation) {
-            NSString *nibName;
 
-            if (variation == VesselABTestVariationA) {
-            // Show Variation A
+        if (variation == VesselABTestVariationB) {
+            // Show Variation B
 
-            } else if (variation == VesselABTestVariationB) {
+        } else {
+            // Show Variation A or go to default screen.
+        }
+        
+    } failureBlock:^{
+        // Show default flow.
+    }];
 
-            // Show Variation B or go to default screen.
-            }
-
-            // other set up
-        failureBlock:^ {
-
-        }];
-    }
+}
 {% endhighlight %}
 </div>
 
