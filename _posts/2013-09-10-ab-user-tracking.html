@@ -1,0 +1,115 @@
+---
+layout: default
+title: User Tracking
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+    <!--li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li-->
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>User Tracking</h1>
+<p>The Vessel library will assign a default unique identifier (we call it a "Vessel ID") to each unique user who installs your application. This Vessel ID is saved to device storage so that it will persist across sessions.</p>
+
+ 
+<p>You can also assign your own user identifier to recognize installs. This is particularly useful if a user is using your app on multiple platforms and you would like to show same test across all the devices. Use following method to set user identifier.</p>
+
+{% highlight java %}
+VesselSDK.setUserId("YOUR_USER_ID")
+{% endhighlight %}
+
+
+    </div>
+
+    <div class="tab-pane" id="ios">
+        <h1>User Tracking</h1>
+<p>The Vessel library will assign a default unique identifier (we call it a "Vessel ID") to each unique user who installs your application. This Vessel ID is saved to device storage so that it will persist across sessions.</p>
+
+ 
+<p>You can also assign your own user identifier to recognize installs. This is particularly useful if a user is using your app on multiple platforms and you would like to show same test across all the devices. Use following method to set user identifier.</p>
+{% highlight obj-c %}
+[VesselAB setUserId:@"YOUR_USER_ID"];
+{% endhighlight %}
+
+</div>
+
+    <div class="tab-pane" id="phonegap">
+        <h1>Track user sessions</h1>
+
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight obj-c %}
+
+// E.g. if user enters in level1 then simply call startSession method.
+vesselab.startSession(
+    function(){},
+    function(error){console.log("error "+ error)}, 
+    "level1");
+
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight obj-c %}
+[VesselAB endAllSessions];
+{% endhighlight %}
+   </div>
+
+
+    <div class="tab-pane" id="titanium">
+        <h1>Track user sessions</h1>
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight javascript %}
+VesselSDK.startSession("signUpWithFacebook");
+// When user completes signup or cancels signup
+VesselSDK.endSession("signUpWithFacebook");
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded.</p>
+{% highlight javascript %}
+VesselSDK.endAllSessions();
+{% endhighlight %}
+   </div>
+
+    <div class="tab-pane" id="winphone">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight csharp %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code</p>
+{% highlight java %}
+    public partial class HomePage : PhoneApplicationPage
+    {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            VesselAB.startSession("SignUp");
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            VesselAB.endSession("SignUp");
+        }
+    }
+{% endhighlight %}
+    </div>
+
+</div>
