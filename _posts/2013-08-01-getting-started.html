@@ -47,27 +47,26 @@ categories: getting_started
         <p>Your app must request the "INTERNET" and "ACCESS_NETWORK_STATE" permissions, if it isn't doing so already. Add following lines in your AndoridManifest.xml file before application tag:</p>
 
         {% highlight java %}
-        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
         {% endhighlight %}
 
         <h4 class='list-group-item-heading'>Step 4</h4>
         <p>Add following import statement in your Activity before setContentView or in Application Context</p>
 
         {% highlight java %}
-        import com.vessel.VesselSDK;
+import com.vessel.VesselSDK;
 
-        public void onCreate(Bundle savedInstanceState) {
+public void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
 
-        // Initialise Vessel 
-        VesselSDK.initialize(getApplicationContext(), secretKey); 
-        setContentView(R.layout.main);
+    // Initialise Vessel 
+    VesselSDK.initialize(getApplicationContext(), secretKey); 
         .......
-        //Your code goes here
-    }
-    {% endhighlight %}
+    //Your code goes here
+}
+{% endhighlight %}
 
     <h4 class='list-group-item-heading'>Step 5 (Optional)</h4>
     <p>In case if you are using <a target='_blank' href='http://developer.android.com/tools/help/proguard.html'>ProGuard</a> for your application, then add following lines in your proguard.cfg file, It will be located inside your project folder.It will exclude VesselSDK from obfuscation process.</p>

@@ -44,13 +44,14 @@ categories: api
         </h4>
 
         <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
-        <p>To retrieve the variation control data, you can call VesselAB.getValue(String key, String default) method.</p>
         <p>Eg. To change messaging on a TextView: </p>
 {% highlight java %}
-        ...... 
-        title = VesselAB.getValue("purchase_title", getString(R.string.default_title));
+        // This is method will find variable from given test. If test is available and active, 
+        // then will return variation value else will return default value.
 
-        // Other initialization code, set the title to respective TextView
+
+       title = VesselAB.getValue("YOUR_TEST_NAME","VARIABLE_KEY", "DEFAULT_VALUE");
+
 {% endhighlight %}
 
 </div>

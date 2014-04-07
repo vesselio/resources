@@ -43,32 +43,27 @@ categories: api
 
 {% highlight java %}
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_main);
+VesselAB.getVariationForTest("YOUR_TEST_NAME", new ABListener() {
 
-
-        VesselAB.reloadTest();
-        VesselAB.setABListener(new ABListener() {
-
-            @Override
-            public void testNotAvailable(TestVariation arg0) {
-                // Show default screen 
-            }
-
-            @Override
-            public void testLoading() {
-                // Show loading 
-
-            }
-
-            @Override
-            public void testLoaded(TestVariation arg0) {
-                // Check which variation control is loaded 
-                // if A or B -> Show new landing screen experience 
-            }
-        });
+    @Override
+    public void testNotAvailable(TestVariation arg0) {
+        // Test is not available, show default user flow
     }
+
+    @Override
+    public void testAvailable(String s, TestVariation variation) {
+    
+        // Test is now available, make sure its activated before we use it.
+        VesselAB.activateTest(s);
+                
+        // if we have variation B then show onboarding or control show home.
+        if(variation == TestVariation.B){
+            // Show new onboarding user flow.
+        }else{
+           // Show old onboarding user flow.
+        }
+    }
+});
 {% endhighlight %}
 </div>
 

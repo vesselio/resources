@@ -27,20 +27,21 @@ categories: api
         <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
         <p>Eg. To track a user session called as SignUp we can add the following code in SignUpActivity </p>
 {% highlight java %}
-public class SignUpActivity extends Activity {
+// You can start "SignUp Screen" session by calling following startSession method.
 
-    @Override
-    protected void onResume() {
-         super.onResume();
-         VesselAB.startSession("SignUp");
-    }
+VesselAB.startSession("SignUp");
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        VesselAB.endSession("SignUp");
-    }
-}
+// To end the "SignUp Screen", use following endSession method.
+
+VesselAB.endSession("SignUp");
+
+Or 
+
+//If you have started multiple sessions, to end and report them all at once. Call end all session
+// method as shown bellow.
+
+VesselAB.endAllSessions();
+
 {% endhighlight %}
 
 

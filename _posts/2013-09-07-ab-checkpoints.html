@@ -41,7 +41,31 @@ categories: api
 
         <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
 {% highlight java %}
-VesselAB.checkPointVisited("signedUpWithTwitter");
+// e.g. If user signUp with facebook then you can report checkpoint as follows
+
+// This method will report checkpoint to all active tests.
+VesselSDK.reportCheckpoint("CHECKPOINT_NAME"); // e.g. Cliked on Facebook or Bought Coins
+
+Or
+
+// This method will report checkpoint to only onboarding A/B test. 
+VesselAB.reportCheckpoint("YOUR_TEST_NAME", "CHECKPOINT_NAME");
+
+Or 
+
+You can also send additional metadata along with checkpoints. E.g. We would like to send user information along with checkpoint.
+
+try {
+    JSONObject metaData = new JSONObject();
+    metaData.put("paidUser", true);
+    metaData.put("adCampaign", "bannerAds");
+    metaData.put("boughtCoins", false);
+
+    VesselAB.reportCheckpoint("YOUR_TEST_NAME", metaData);
+
+} catch (JSONException e) {
+}
+
 {% endhighlight %}
     </div>
 
@@ -126,10 +150,13 @@ NSDictionary *userMetaData = @{@"userId" : @123455 , @"paidUer": @YES};
         </p>
             <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
        
-       <h3>Checkpoint Api</h3>     <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
+       <h3>Checkpoint Api</h3>     
+       <p>To report a checkpoint, you can use the vesselab.reportCheckpoint method as show below:</p>
 {% highlight javascript %}
 // e.g. If user signUp with facebook then you can report checkpoint as follows
-VesselSDK.checkPointVisited('signUp');
+
+// This method will report checkpoint to all active tests.
+VesselSDK.reportCheckpoint('signUp');
 {% endhighlight %}
 </div>
 </div>

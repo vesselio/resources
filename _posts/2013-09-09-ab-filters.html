@@ -10,7 +10,7 @@ categories: api
     <li>
         <a href="#ios" data-toggle="tab">iOS</a>
     </li>
-    <li>
+    <!--li>
         <a href="#phonegap" data-toggle="tab">Phone Gap</a>
     </li>
     <li>
@@ -18,29 +18,21 @@ categories: api
     </li>
     <li>
         <a href="#winphone" data-toggle="tab">Windows Phone</a>
-    </li>
+    </li-->
 </ul>
 
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
-        <h1>Track user sessions</h1>
-        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
-        <p>Eg. To track a user session called as SignUp we can add the following code in SignUpActivity </p>
-{% highlight java %}
-public class SignUpActivity extends Activity {
+        <h1>Apply Test Filters</h1>
+        <p>Vessel makes it easy to segment your customers. To do so, first navigate to your test in the dashboard. Then add filters inbuilt or custom filters. <a href="{% post_url 2013-08-03-creating-ab-test %}">Learn more</a></p>
+        <p>
+         Vessel provides <strong>inbuilt filters like App,SDK Version, Device model, manufacture, New vs Returning users etc.</strong> But you can define your own custom filters also. 
+        </p>
 
-    @Override
-    protected void onResume() {
-         super.onResume();
-         VesselAB.startSession("SignUp");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        VesselAB.endSession("SignUp");
-    }
-}
+E.g. Deliver test to all paid users who have not bought any coins in your game. To add a customer to this segment, set custom filters as follows.</p>
+{% highlight obj-c %}
+Vessel *sharedInstance = [Vessel sharedInstance];
+[sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
 {% endhighlight %}
 
 
@@ -59,7 +51,6 @@ Vessel *sharedInstance = [Vessel sharedInstance];
 [sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
 {% endhighlight %}
 
-<p> </p>
 </div>
 
     <div class="tab-pane" id="phonegap">
