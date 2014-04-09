@@ -4,3 +4,4 @@ pygments: true
 baseurl: /
 permalink: /:title
 paginate: 1
+markdown: kramdown
