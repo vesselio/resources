@@ -1,0 +1,139 @@
+---
+layout: default
+title: Rich Media/Assets
+categories: api
+---
+<ul class="nav nav-tabs" id="os-tabs">
+    <li class="active">
+        <a href="#android" data-toggle="tab">Android</a>
+    </li>
+    <li>
+        <a href="#ios" data-toggle="tab">iOS</a>
+    </li>
+    <!--li>
+        <a href="#phonegap" data-toggle="tab">Phone Gap</a>
+    </li>
+    <li>
+        <a href="#titanium" data-toggle="tab">Titanium</a>
+    </li>
+    <li>
+        <a href="#winphone" data-toggle="tab">Windows Phone</a>
+    </li-->
+</ul>
+
+<div id='os-tab-content' class="tab-content">
+    <div class="tab-pane active" id="android">
+        <h1>Rich Media/Assets</h1>
+        <p>
+            Vessel allows you to publish & A/B test your rich media assets including images, videos, promotional ads etc. 
+        </p>
+        <h3>Step 1. Create Test and Upload Assets.</h3>
+        <p><img src='/img/ab_test/assets.png' /></p>
+         <h3>Step 2. Select and Publish.</h3>
+        <p>
+           Give unique name to your asset. Then select asset you want to deliver for each variation.
+        </p>
+        <p><img src='/img/ab_test/selectassets.png' /></p>
+        <h3>Step 3: Assets Api</h3>
+{% highlight java %}
+Coming soon.
+{% endhighlight %}
+    </div>
+
+    <div class="tab-pane" id="ios">
+        <h1>Rich Media/Assets</h1>
+        <p>
+            Vessel allows you to publish & A/B test your rich media assets including images, videos, promotional ads etc. 
+        </p>
+        <h3>Step 1. Create Test and Upload Assets.</h3>
+        <p><img src='/img/ab_test/assets.png' /></p>
+         <h3>Step 2. Select and save</h3>
+        <p>
+           Give unique name to your asset. Then select asset you want to deliver for each variation.
+        </p>
+        <p><img src='/img/ab_test/selectassets.png' /></p>
+        <h3>Step 3: Assets Api</h3>
+{% highlight obj-c %}
+    // You can use getImageFor api to download image directly, Vessel framework will handle caching & other network operations. It will return variationImage
+
+    [VesselAB fromTest:@"asset_demo" getImageFor:@"ads_assets" success:^(UIImage *variationImage) {
+        // Get Image and show.
+        
+    } failureBlock:^{
+       // Show your default image 
+    }];
+{% endhighlight %}
+
+        <h3>Step 4: Assets Url Api</h3>
+{% highlight obj-c %}
+    //If you already have your own caching, downloading mechanism then you can use assetUrl Api to get asset url.
+
+        NSString *variationAssetUrl = [VesselAB fromTest:@"asset_demo" getAssetUrl:@"ads_assets" defaultValue:@"YOUR_DEFAULT_URL"];
+{% endhighlight %}
+</div>
+
+    <!--div class="tab-pane" id="phonegap">
+        <h1>User Sessions</h1>
+
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight obj-c %}
+
+// E.g. if user enters in level1 then simply call startSession method.
+vesselab.startSession(
+    function(){},
+    function(error){console.log("error "+ error)}, 
+    "level1");
+
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight obj-c %}
+[VesselAB endAllSessions];
+{% endhighlight %}
+   </div-->
+
+
+    <!--div class="tab-pane" id="titanium">
+        <h1>User sessions</h1>
+        <p>To track user sessions you can use startSession and endSession methods. </p>
+        <p>Eg. To track a user sessions, you can add the following code</p>
+{% highlight javascript %}
+VesselSDK.startSession("signUpWithFacebook");
+// When user completes signup or cancels signup
+VesselSDK.endSession("signUpWithFacebook");
+{% endhighlight %}
+
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded.</p>
+{% highlight javascript %}
+VesselSDK.endAllSessions();
+{% endhighlight %}
+   </div-->
+
+    <!--div class="tab-pane" id="winphone">
+        <h1>Adding checkpoints and sessions</h1>
+        <h3>Adding checkpoints</h3>
+        <p>To report a checkpoint, you can use the VesselAB.checkPointVisited() method as show below</p>
+{% highlight csharp %}
+VesselAB.checkPointVisited("signedUpWithTwitter");
+{% endhighlight %}
+        <h3>Adding sessions</h3>
+        <p>To track user sessions you can use VesselAB.startSession("YOUR_SESSION_NAME") and VesselAB.endSession("YOUR_SESSION_NAME"). You can also close all open sessions by calling VesselAB.endAllSessions()</p>
+        <p>Eg. To track a user session called as SignUp we can add the following code</p>
+{% highlight java %}
+    public partial class HomePage : PhoneApplicationPage
+    {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            VesselAB.startSession("SignUp");
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            VesselAB.endSession("SignUp");
+        }
+    }
+{% endhighlight %}
+    </div-->
+
+</div>
