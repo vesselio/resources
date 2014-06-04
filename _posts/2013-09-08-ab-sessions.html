@@ -36,7 +36,7 @@ Vessel will automatically track your application sessions.
 {% endhighlight %}
         <h3>User Session</h3>
         <p>
-A user session begins when a user takes certian action and ends when action is completed. E.g To major listening time or time spent in shopping cart you need add following code.
+A user session begins when a user takes certain action and ends when action is completed. E.g To major listening time or time spent in shopping cart you need add following code.
         </p>
 {% highlight java %}
 // You can start "Listening" session by calling following startSession method.
@@ -71,28 +71,49 @@ Vessel will automatically track your application sessions.
 {% endhighlight %}
         <h3>User Session</h3>
         <p>
-A user session begins when a user takes certian action and ends when action is completed. E.g To major listening time or time spent in shopping cart you need add following code.
+A user session begins when a user takes certain action and ends when action is completed. E.g To major listening time or time spent in shopping cart you need add following code.
         </p>
 
-{% highlight obj-c %}
+<h4>Start a new session</h4>
+{% highlight java %}
 // You can start "Listening" session by calling following startSession method.
 
+/** Starts a new session.
+ 
+ @param sessionName The session that is to be started.
+ */
 [VesselAB startSession:@"Listening"];
+
+{% endhighlight %}
+
+<h4>End the session</h4>
+{% highlight java %}
 
 // To end the "Listening", use following endSession method.
 
+/** Ends a started session.
+ 
+ @param sessionName The session to be ended. Note that the session has to be started to end it.
+ */
 [VesselAB endSession:@"Listening"];
+{% endhighlight %}
 
-Or 
+<h4>End all sessions</h4>
+<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
+{% highlight java %}
 
+/** Ends all sessions that have been started but haven't been ended yet.
+ */
 //If you have started multiple sessions, to end and report them all at once. Call end all session
 // method as shown bellow.
 
 [VesselAB endAllSessions];
 {% endhighlight %}
 
-<p>You can add the following code when your app goes to background to ensure that session times are correctly recorded</p>
-{% highlight obj-c %}
+<h4>Discard all sessions</h4>
+{% highlight java %}
+/** Discards all sessions that have been started but haven't been ended yet.
+ */
 [VesselAB endAllSessions];
 {% endhighlight %}
 </div>

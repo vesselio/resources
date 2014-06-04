@@ -42,7 +42,12 @@ VesselSDK.setUserId("YOUR_USER_ID")
 
  
 <p>You can also assign your own user identifier to recognize installs. This is particularly useful if a user is using your app on multiple platforms and you would like to show same test across all the devices. Use following method to set user identifier.</p>
-{% highlight obj-c %}
+{% highlight java %}
+/** Sets a user identifier for the sessions and checkpoints.
+ 
+@param userId A string to be associated with sessions and checkpoints.
+ */
+
 [VesselAB setUserId:@"YOUR_USER_ID"];
 {% endhighlight %}
 

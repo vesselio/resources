@@ -30,9 +30,24 @@ categories: api
         </p>
 
 E.g. Deliver test to all paid users who have not bought any coins in your game. To add a customer to this segment, set custom filters as follows.</p>
-{% highlight obj-c %}
-Vessel *sharedInstance = [Vessel sharedInstance];
-[sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
+{% highlight java %}
+
+    /* Set custom filter properties. You can pass in custom properties like "age", "23"
+     * and add a filter "age > 20" on the vessel dashboard.
+     * Custom properties are not saved and need to be initialized on app startup.
+     * 
+     * @param properties -Map of properties. Properties will be co-erced to required types.
+     * For boolean properties, expected values are "true" or "false"
+     */
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("paid_user", "true");
+        map.put("age", "23");
+        map.put("ltv", "2.99");
+        
+        VesselSDK.setCustomFilterProperties(map);
+        
+
 {% endhighlight %}
 
 
@@ -46,9 +61,16 @@ Vessel *sharedInstance = [Vessel sharedInstance];
         </p>
 
 E.g. Deliver test to all paid users who have not bought any coins in your game. To add a customer to this segment, set custom filters as follows.</p>
-{% highlight obj-c %}
-Vessel *sharedInstance = [Vessel sharedInstance];
-[sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
+{% highlight java %}
+
+    // The method allows you to set custom filter key and values. It will show A/B test to users who 
+    // will given set of filters.
+     
+    // @param filters - Valid NSDictionary containly filter and its values.
+    
+
+    Vessel *sharedInstance = [Vessel sharedInstance];
+    [sharedInstance setFilters:@{@"paidUser":@YES, @"bought Coins":@NO}];
 {% endhighlight %}
 
 </div>

@@ -35,14 +35,14 @@ categories: api
 {% highlight java %}
 @Override
 protected void onPause() {
-    VesselAB.onPause();
+    VesselAB.onPause(YOUR_ACTIVITY.this);
     super.onPause();
 }
 
 @Override
 protected void onResume() {
     VesselAB.onResume();
-    super.onResume();
+    super.onResume(YOUR_ACTIVITY.this);
 }{% endhighlight %}
 
     <p>At this point you have successfully integrated VesselSDK in your application.</p>   
@@ -57,27 +57,10 @@ protected void onResume() {
     <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
 </p>
 <p>Import SDK in your ViewController</p>
+<p>Or Open Your Project and find a file with .pch extention. e.g. "ABDemo-Prefix.pch" and add following import statement
+</p>
 {% highlight obj-c %}
 #import <Vessel/Vessel.h>
-{% endhighlight %}
-<p>Add the following code in the <b>viewDidLoad</b> method</p>
-{% highlight obj-c %}
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-
-    // This method will find test with given name and will return available test variation.
-    [VesselAB getVariationForTest:@"YOUR_TEST_NAME" WithSuccessBlock:^(NSString *testName, VesselABTestVariation variation) {
-        
-        // Activate test before we start using it.
-        [VesselAB activateTest:testName];
-        
-        
-    } failureBlock:^{
-        // Show default flow.
-    }];
-
-}
 {% endhighlight %}
 <p>At this point you have successfully integrated VesselSDK in your application.</p>   
 </div>

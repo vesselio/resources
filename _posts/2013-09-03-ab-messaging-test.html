@@ -46,11 +46,17 @@ categories: api
         <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
         <p>Eg. To change messaging on a TextView: </p>
 {% highlight java %}
-        // This is method will find variable from given test. If test is available and active, 
-        // then will return variation value else will return default value.
+    /***
+     * Returns the value associated with a given test variation variable. If there is none associated 
+     *  or the tes failed to load then the defaultValue is returned.
+     * 
+     * @param variableKey The variableKey whose value is to the retrieved.
+     * @param defaultValue In case there is no variation variable named variationVariable
+     *                     or if the test failed to load then the defaultValue is returned.
+     * @return value for given key | return default value if key is missing.
+     */
 
-
-       title = VesselAB.getValue("YOUR_TEST_NAME","VARIABLE_KEY", "DEFAULT_VALUE");
+    String title = VesselAB.getValue("YOUR_TEST_NAME","VARIABLE_KEY", "DEFAULT_VALUE");
 
 {% endhighlight %}
 
@@ -79,12 +85,17 @@ categories: api
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is <strng>"purchase_title"</strong> then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>Eg. To change messaging on a TextView: </p>
-{% highlight obj-c %}
+{% highlight java %}
 
-// This is method will find variable from given test. If test is available and active, 
-// then will return variation value else will return default value.
+/** Returns the value associated with a given test variation variable. If there is none associated or the test failed to load then the defaultValue is returned.
+ 
+ @param testName The test name from which variation variable needs to be retrieved.
+ @param variableKey The variableKey whose value is to the retrieved.
+ @param defaultValue In case there is no variation variable named variationVariable or if the test failed to load then the defaultValue is returned.
+ */
 
-_viewController.lblSubtitle.text =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"VARIATION_KEY" defaultValue:@"DEFAULT_VALUE"];
+NSString *newLabel =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"VARIATION_KEY" defaultValue:@"DEFAULT_VALUE"];
+
 {% endhighlight %}
 
 </div>

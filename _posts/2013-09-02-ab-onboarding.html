@@ -23,7 +23,7 @@ categories: api
 
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
-        <h1>Onboarding AB test</h1>
+        <h1>First AB test</h1>
 
 
         <p>
@@ -42,33 +42,39 @@ categories: api
         <p>Instrument your landing test in your activity as follows</p>
 
 {% highlight java %}
+    /**
+     * This method set ABListener and gives call back when test is loaded or
+     * failed.
+     * 
+     * @param ABListener
+     */
+    VesselAB.getVariationForTest("YOUR_TEST_NAME", new ABListener() {
 
-VesselAB.getVariationForTest("YOUR_TEST_NAME", new ABListener() {
-
-    @Override
-    public void testNotAvailable(TestVariation arg0) {
-        // Test is not available, show default user flow
-    }
-
-    @Override
-    public void testAvailable(String s, TestVariation variation) {
-    
-        // Test is now available, make sure its activated before we use it.
-        VesselAB.activateTest(s);
-                
-        // if we have variation B then show onboarding or control show home.
-        if(variation == TestVariation.B){
-            // Show new onboarding user flow.
-        }else{
-           // Show old onboarding user flow.
+        @Override
+        public void testNotAvailable(TestVariation arg0) {
+            // Test is not available, show default user flow
         }
-    }
-});
+
+        @Override
+        public void testAvailable(String s, TestVariation variation) {
+        
+            /*************************** IMPORTANT **************************/
+            // Test is now available, make sure its activated before we use it.
+            VesselAB.activateTest(s);
+                    
+            // if we have variation B then show onboarding or control show home.
+            if(variation == TestVariation.B){
+                // Show new onboarding user flow.
+            }else{
+               // Show old onboarding user flow.
+            }
+        }
+    });
 {% endhighlight %}
 </div>
 
 <div class="tab-pane" id="ios">
-    <h1>Onboarding AB test</h1>
+    <h1>First AB test</h1>
     <p>
         <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
     </p>
@@ -84,13 +90,16 @@ VesselAB.getVariationForTest("YOUR_TEST_NAME", new ABListener() {
 
     <p>Instrument your landing test in your View Controller as follows</p>
 {% highlight obj-c %}
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
+/** Returns a variation returned by the Vessel server.
+ 
+ @param testName - Look up and load variation for given test.
+ @param success This block is called when the test is retrieved successfully from the Vessel server.
+ @param failure This block is called when the test fails to load.
+ */
 
-    // This method will find test with given name and will return available test variation.
     [VesselAB getVariationForTest:@"YOUR_TEST_NAME" WithSuccessBlock:^(NSString *testName, VesselABTestVariation variation) {
         
+        /*************************** IMPORTANT **************************/
         // Activate test before we start using it.
         [VesselAB activateTest:testName];
 
@@ -106,12 +115,11 @@ VesselAB.getVariationForTest("YOUR_TEST_NAME", new ABListener() {
         // Show default flow.
     }];
 
-}
 {% endhighlight %}
 </div>
 
 <div class="tab-pane" id="phonegap">
-    <h1>Onboarding AB test</h1>
+    <h1>First AB test</h1>
     <p>
         <strong>Prerequisites: </strong>You have already registered and integrated the Vessel SDK in the Application. <a href='{% post_url 2013-08-01-getting-started %}'>Learn more.</a>
     </p>

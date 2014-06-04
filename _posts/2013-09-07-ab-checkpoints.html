@@ -86,19 +86,53 @@ try {
         </p>
             <img src='{{ site.baseurl }}img/ab_test/checkpoints.png' />
        
-       <h3>Checkpoint Api</h3>   <p>To report a checkpoint, you can use the VesselAB reportCheckPoint method as show below:</p>
+       <h3>Checkpoint Api</h3> <p>To report a checkpoint, you can use the VesselAB reportCheckPoint method as show below:</p>
+
+       <h4>Report Checkpoint to all active tests</h4>
 {% highlight obj-c %}
 
-// This method will report checkpoint to all active tests.
+/** Reports a checkpoint to the Vessel server, This method will report checkpoint to all
+active tests
+ 
+ @param checkpointName The checkpoint to be reported.
+ */
+
 [VesselAB reportCheckPoint:@"signupScreen"];
 
-// This method will report checkpoint to only onboarding A/B test. 
-[VesselAB reportCheckPoint:@"signupScreen" forTest:@"onboarding"];
+{% endhighlight %}
+
+<h4>Report checkpoint to only specific test</h4>
+
+{% highlight obj-c %}
+
+/** Reports a checkpoint to the Vessel server for given active test.
+ 
+ @param checkpointName The checkpoint to be reported.
+ @param testName The name of the test for which checkpoint will be reported.
+ */ 
+[VesselAB reportCheckPoint:@"signupScreen" forTest:@"YOUR_TEST_NAME"];
 
 You can also send additional metadata along with checkpoints. E.g. We would like to send user information along with checkpoint.
 
 // This will report a checkpoint to only social email test if it is active with meta data.
 NSDictionary *userMetaData = @{@"userId" : @123455 , @"paidUer": @YES};
+[VesselAB reportCheckPoint:@"Facebook Login" forTest:@"socialemail" with:userMetaData];
+{% endhighlight %}
+
+<h4>Report checkpoint with meta data</h4>
+
+{% highlight java%}
+
+/** Reports a checkpoint to the Vessel server for given active test with metaData.
+ 
+ @param checkpointName The checkpoint to be reported.
+ @param testName The name of the test for which checkpoint will be reported.
+ @param metaData Extra meta data will be reported at this checkpoint
+ */
+
+// This will report a checkpoint to only social email test if it is active with meta data.
+NSDictionary *userMetaData = @{@"userId" : @123455 , @"paidUer": @YES};
+
 [VesselAB reportCheckPoint:@"Facebook Login" forTest:@"socialemail" with:userMetaData];
 {% endhighlight %}
 </div>

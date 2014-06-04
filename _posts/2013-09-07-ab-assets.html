@@ -53,8 +53,10 @@ Coming soon.
         </p>
         <p><img src='/img/ab_test/selectassets.png' /></p>
         <h3>Step 3: Assets Api</h3>
-{% highlight obj-c %}
-    // You can use getImageFor api to download image directly, Vessel framework will handle caching & other network operations. It will return variationImage
+{% highlight java %}
+/**
+ Get the image associated with a given test variation variable. If there is none associated or the test failed to load then the will execute failure block.
+*/
 
     [VesselAB fromTest:@"asset_demo" getImageFor:@"ads_assets" success:^(UIImage *variationImage) {
         // Get Image and show.
@@ -65,9 +67,14 @@ Coming soon.
 {% endhighlight %}
 
         <h3>Step 4: Assets Url Api</h3>
-{% highlight obj-c %}
-    //If you already have your own caching, downloading mechanism then you can use assetUrl Api to get asset url.
-
+{% highlight java %}
+    /** Returns the assetUrl associated with a given test asset variation variable. If there is none associated or the test failed to load then the defaultValue is returned.
+ 
+     @param testName The test name from which variation variable needs to be retrieved.
+     @param variableKey The variableKey whose value is to the retrieved.
+     @param defaultValue In case there is no variation variable named variationVariable or if the test failed to load then the defaultValue is returned.
+     */
+        
         NSString *variationAssetUrl = [VesselAB fromTest:@"asset_demo" getAssetUrl:@"ads_assets" defaultValue:@"YOUR_DEFAULT_URL"];
 {% endhighlight %}
 </div>
