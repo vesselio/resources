@@ -143,3 +143,15 @@ ul img {
     .footer a {
       color: #fff;
       font-size: 14px; } }
+
+body {
+  color: #51534d;
+}
+
+.tab-content ol li {
+  margin-bottom: 8px;
+}
+
+.tab-content h4 {
+  margin-bottom: 10px;
+}
