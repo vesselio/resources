@@ -8,10 +8,10 @@
         {% endfor %}
 
         <li class='list-group-item'>
-            <a href='#vessel_command_center' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
+            <a href='#vessel_command_center' class="accordion-toggle " data-toggle="collapse" data-parent="#side-nav">
                 How to A/B test?
             </a>
-            <ul id='vessel_command_center' class='{% if 'vessel_command_center' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+            <ul id='vessel_command_center' class='collapse in nav nav-pills nav-stacked'>
                 {% for post in site.categories.vessel_command_center reversed %}
                 <li class='{% if page.url == post.url %}active{% endif %}'>
                     <a href="{{ post.url }}">{{ post.title }}</a>
@@ -24,7 +24,7 @@
             <a href='#api' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
                 A/B testing APIs
             </a>
-            <ul id='api' class='{% if 'api' != page.categories[0] %}collapse{% else %}in{% endif %} nav nav-pills nav-stacked'>
+            <ul id='api' class='collapse in nav nav-pills nav-stacked'>
                 {% for post in site.categories.api reversed %}
                 <li class='{% if page.url == post.url %}active{% endif %}'>
                     <a href="{{ post.url }}">{{ post.title }}</a>
