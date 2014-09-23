@@ -28,7 +28,7 @@ categories: api
             Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
         </p>
 
-        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='iOS step 6'/>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='Onboarding A/B Test'/>
         <p>Instrument your landing test in your activity as follows</p>
 
 {% highlight java %}
@@ -60,11 +60,12 @@ categories: api
 </div>
 
 <div class="tab-pane" id="ios">
-    <h3>How to A/B test Landing Screen?</h3>
-    <p>
-        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
-    </p>
+        <h3>Onboarding test</h3>
+        <p>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
+        </p>
 
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='Onboarding A/B Test'/>
     <p>Instrument your landing test in your View Controller as follows</p>
 {% highlight obj-c %}
 /** Returns a variation returned by the Vessel server.
@@ -76,11 +77,6 @@ categories: api
 
     [VesselAB getVariationForTest:@"YOUR_TEST_NAME" WithSuccessBlock:^(NSString *testName, VesselABTestVariation variation) {
         
-        /*************************** IMPORTANT **************************/
-        // Activate test before we start using it.
-        [VesselAB activateTest:testName];
-
-
         if (variation == VesselABTestVariationB) {
             // Show Variation B
 
@@ -96,12 +92,12 @@ categories: api
 </div>
 
 <div class="tab-pane" id="phonegap">
-    <h3>How to A/B test Landing Screen?</h3>
-    <p>
-        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
-    </p>
+        <h3>Onboarding test</h3>
+        <p>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
+        </p>
 
-    <p>Instrument your landing test in as follows</p>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='Onboarding A/B Test'/>
 {% highlight java %}
     document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -124,14 +120,12 @@ categories: api
 
 
 <div class="tab-pane" id="titanium">
-    <p>
-        Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
-    </p>
+        <h3>Onboarding test</h3>
+        <p>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
+        </p>
 
-    <h3>How to A/B test Landing Screen?</h3>
-    <p>
-        Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
-    </p>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='Onboarding A/B Test'/>
 
     <p>Instrument your apps.js to load the screen as follows</p>
 {% highlight javascript %}
@@ -163,15 +157,12 @@ categories: api
 </div>
 
 <div class="tab-pane" id="winphone">
-        <h1>Onboarding AB test</h1>
+        <h3>Onboarding test</h3>
         <p>
-            Decide what you want to A/B test? With Vessel AB you have flexibility to test various components e.g. user flows, User interfaces, UI Colors, Messages etc. Following examples demonstrates various use cases.
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
         </p>
 
-        <h3>How to A/B test Landing Screen?</h3>
-        <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
-        </p>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='Onboarding A/B Test'/>
 
         <p>Instrument your landing test in your page's code-behind as follows</p>
 {% highlight csharp %}

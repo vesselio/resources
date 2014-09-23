@@ -23,17 +23,11 @@ categories: api
 
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
-        <h1>UI / Messaging AB test</h1>
-        <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
+        <h3>A/B test messaging</h3>
+     
         <p> Lets assume you want to decide which message works better e.g.</p>
 
-        <h4 style="color:green">
-            A - > ‘Purchase Now’ or 'Sign up for free'
-        </h4>
-
-        <h4 style="color:blue">
-            B - > ‘Buy Now’ or 'Start your free trial today'
-        </h4>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/message.png' alt='A/B Testing Message'/>
 
         <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
         <p>Eg. To change messaging on a TextView: </p>
@@ -55,16 +49,12 @@ categories: api
 </div>
 
 <div class="tab-pane" id="ios">
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
+      <h3>A/B test messaging</h3>
+     
+        <p> Lets assume you want to decide which message works better e.g.</p>
 
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/message.png' alt='A/B Testing Message'/>
 
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is <strng>"purchase_title"</strong> then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>Eg. To change messaging on a TextView: </p>
@@ -84,16 +74,12 @@ NSString *newLabel =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"V
 </div>
 
 <div class="tab-pane" id="phonegap">
- <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
+      <h3>A/B test messaging</h3>
+     
+        <p> Lets assume you want to decide which message works better e.g.</p>
 
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/message.png' alt='A/B Testing Message'/>
 
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call vesslab.getValue(function(value){},function(error){}, key, defaultValue) method.</p>
@@ -109,16 +95,12 @@ NSString *newLabel =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"V
 
 
 <div class="tab-pane" id="titanium">
-   <h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
+      <h3>A/B test messaging</h3>
+     
+        <p> Lets assume you want to decide which message works better e.g.</p>
 
-<h4 style="color:green">
-    A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/message.png' alt='A/B Testing Message'/>
 
-<h4 style="color:blue">
-    B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call VesselSDK.getValue(key, default) method.</p>
@@ -135,16 +117,11 @@ NSString *newLabel =[VesselAB fromTest:@"YOUR_TEST_NAME" getVariableValueFor:@"V
 
 <div class="tab-pane" id="winphone">
         
-<h3>How to A/B Test UI + In App Messaging ? – e.g. Text Messages, Colors etc.</h3>
-<p> Lets assume you want to decide which message works better e.g.</p>
+      <h3>A/B test messaging</h3>
+     
+        <p> Lets assume you want to decide which message works better e.g.</p>
 
-<h4 style="color:green">
-A - > ‘Purchase Now’ or 'Sign up for free'
-</h4>
-
-<h4 style="color:blue">
-B - > ‘Buy Now’ or 'Start your free trial today'
-</h4>
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/message.png' alt='A/B Testing Message'/>
 
 <p>First create test and define variation controls in Vessel AB Center, e.g. If variation control is "purchase_title" then before you set welcome text get the value from VesselAB Sdk as follows.</p>
 <p>To retrieve the variation control data, you can call VesselAB.getValue(string key, string default) method.</p>
