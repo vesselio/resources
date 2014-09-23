@@ -1,6 +1,8 @@
 <div id='side-nav' class="side-nav">
      <ul class='list-group'>
-
+        <li class='list-group-item'>
+            <strong>Vessel</strong>
+        </li>
         {% for post in site.categories.getting_started reversed %}
         <li class='list-group-item {% if page.url == post.url %}active{% endif %}'>
             <a href="{{ post.url }}">{{ post.title }}</a>
@@ -9,7 +11,9 @@
     </ul>
 
         <ul class='list-group'>
-
+        <li class='list-group-item'>
+            <strong>A/B Testing</strong>
+        </li>
                 {% for post in site.categories.api reversed %}
         <li class='list-group-item {% if page.url == post.url %}active{% endif %}'>
             <a href="{{ post.url }}">{{ post.title }}</a>
@@ -19,6 +23,9 @@
     </ul>
     <ul class='list-group'>
 
+        <li class='list-group-item'>
+            <strong>Features</strong>
+        </li>
                 {% for post in site.categories.vessel_command_center reversed %}
         <li class='list-group-item {% if page.url == post.url %}active{% endif %}'>
             <a href="{{ post.url }}">{{ post.title }}</a>
@@ -29,7 +36,9 @@
    
     <ul class='list-group'>
 
-
+        <li class='list-group-item'>
+            <strong>Next Steps</strong>
+        </li>
         <li class='list-group-item'>
             <a href='#use_cases' class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav">
                 Use Cases
