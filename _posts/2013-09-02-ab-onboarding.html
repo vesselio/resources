@@ -23,12 +23,12 @@ categories: api
 
 <div id='os-tab-content' class="tab-content">
     <div class="tab-pane active" id="android">
-
-        <h3>How to A/B test Landing Screen?</h3>
+        <h3>Onboarding test</h3>
         <p>
-            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls. To learn more <a href='{% post_url 2013-08-02-how-it-works %}'>click here</a>
+            Let assume you want to test, which sign up screen A or B drives more user signups. To do so create test and define variation controls.
         </p>
 
+        <img class='img-responsive' src='{{ site.baseurl }}img/ab_test/onboarding.png' alt='iOS step 6'/>
         <p>Instrument your landing test in your activity as follows</p>
 
 {% highlight java %}
@@ -48,10 +48,6 @@ categories: api
         @Override
         public void testAvailable(String s, TestVariation variation) {
         
-            /*************************** IMPORTANT **************************/
-            // Test is now available, make sure its activated before we use it.
-            VesselAB.activateTest(s);
-                    
             // if we have variation B then show onboarding or control show home.
             if(variation == TestVariation.B){
                 // Show new onboarding user flow.
