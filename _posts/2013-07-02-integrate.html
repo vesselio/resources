@@ -94,8 +94,7 @@ protected void onResume() {
     <p>To initilize Vessel Framework add the following line inside the application:didFinishLaunchingWithOptions function.</p>
 
     {% highlight objc %}
-    [Vessel *sharedInstance = [Vessel sharedInstance];
-    [sharedInstance initializeWithAppSecret:@"APP_KEY"];
+    [[Vessel sharedInstance] initializeWithAppSecret:@"APP_KEY"];
     {% endhighlight %}
 
 </li>
