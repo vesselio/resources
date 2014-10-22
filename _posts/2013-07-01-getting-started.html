@@ -38,9 +38,9 @@ categories: getting_started
         
         <h4 class='list-group-item-heading'>Step 2: Install</h4>
         <ol>
-            <li>Unzip the downloaded vesselsdk.zip</li>
-            <li>Import the vesselsdk.jar into your existing Android project, by extracting it into your "libs" folder.</li>
-            <li>If your project does not already have a "libs" folder, create one at the root of the project by right-clicking the project and choosing "New" and then "Folder.</li>
+            <li>Unzip the SDK package./li>
+            <li>Import the vesselsdk.jar into your existing Android project by extracting it into your "libs" folder.</li>
+            <li>If your project does not already have a "libs" folder, create one at the root of the project by right-clicking the project and choosing "New" and then selecting "Folder.</li>
             <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/android_installation.png' alt='iOS step 6'/>
         </ol>
 
@@ -69,7 +69,7 @@ categories: getting_started
                       <div class="panel-body">
                         <ol>
                            <li class='margin-top-10'>
-                                Open Podfile in your Xcode project directory, Add following:
+                                Open Podfile in your Xcode project directory, add following:
                             </li>
                                 {% highlight obj-c %}$ edit Podfile
 platform :ios, '6.0'
@@ -89,13 +89,13 @@ $ pod install
 $open App.xcworkspace
  {% endhighlight%}
 <li class='margin-top-10'>
-    <p>Open your AppDelegate.m file. Import Vessel header as shown below.</p>
+    <p>Open your AppDelegate.m file import Vessel header using the command below.</p>
 
 {% highlight obj-c %}
 #import <Vessel/Vessel.h>
 {% endhighlight %}
 
-    <p>To initilize Vessel Framework add the following line inside the application:didFinishLaunchingWithOptions function.</p>
+    <p>To initilize Vessel Framework add the following line to application:didFinishLaunchingWithOptions function.</p>
 
 {% highlight objc %}
  Vessel *sharedInstance = [Vessel sharedInstance];
@@ -120,16 +120,16 @@ $open App.xcworkspace
             </p>
         </li>
         <li>
-            <p>Make sure you are using the latest version of Xcode (v4.6+) and targeting iOS 4.3 or higher.</p>
+            <p>Vessel supports Xcode v4.6 and above and Apple devices on iOS 6.0 or higher.</p>
         </li>
         <li>
-            <p>Unzip the file you downloaded and drag the Vessel.framework folder into your Xcode project folder target.</p>
+            <p>Unzip the downloaded file and drag the Vessel.framework folder into your Xcode project folder target.</p>
             <p>
                 <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/add_framework.png' alt='iOS step 1'/>
             </p>
         </li>
         <li>
-            <p>Make sure the 'Copy items to destination's group folder' checkbox is checked and the target to be added to is selected.</p>
+            <p>Ensure the 'Copy items to destination's group folder' checkbox is checked and "add to targets" is selected.</p>
             <p>
                 <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/copy_framework.png' alt='iOS step 2'/>
             </p>
@@ -139,16 +139,16 @@ $open App.xcworkspace
 <li class='margin-top-50'>
     <p class='lead'>Add dependencies</p>
     <ol>
-        <li><p>Select you project in Xcode</p></li>
-        <li><p>Click your app name under Targets</p></li>
-        <li><p>Next select the Build Phases tab</p></li>
+        <li><p>Choose you project in Xcode</p></li>
+        <li><p>Select your App name under targets</p></li>
+        <li><p>Click the <b>Build Phases</b> tab</p></li>
         <li>
-            <p>Then expand Link Binary With Libraries as shown below</p>
+            <p>Expand <b>Link Binary With Libraries</b> as shown below</p>
             <p>
                 <img class='img-responsive' src='{{ site.baseurl }}img/getting_started/Link_binaries.png' alt='iOS step 5'/>
             </p>
         </li>
-        <li><p>Click the plus (+) button in the lower left of the Link Binary With Libraries.</p></li>
+        <li><p>Click the plus (+) button on the lower left of the <b>Link Binary With Libraries</b> section.</p></li>
         <li>
             <p>Add the following frameworks:</p>
             <p>
